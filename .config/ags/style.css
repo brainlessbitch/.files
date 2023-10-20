@@ -1,0 +1,114 @@
+*:not(tooltip):not(menu):not(menuitem) {
+  all: unset; }
+
+window#applauncher .applauncher {
+  background: #000000; }
+
+.workspaces {
+  color: #ebefff;
+  background: rgba(45, 56, 74, 0.1);
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
+  margin: 3px 6px 6px 6px;
+  padding: 2px;
+  transition: all 2s;
+  min-height: 100px; }
+  .workspaces button {
+    background: rgba(42, 51, 67, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.25);
+    margin: 0 2px 2px;
+    transition: all 0.24s cubic-bezier(0.42, 0, 1, 1); }
+    .workspaces button:hover {
+      background: rgba(51, 64, 84, 0.5); }
+  .workspaces button.focused {
+    background: rgba(56, 71, 94, 0.7);
+    font-weight: bolder;
+    border-radius: 6px;
+    animation: flicker 1.5s infinite alternate; }
+
+@keyframes flicker {
+  0% {
+    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
+  18% {
+    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
+  22% {
+    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
+  25% {
+    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
+  53% {
+    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
+  57% {
+    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
+  100% {
+    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
+  20% {
+    text-shadow: none; }
+  24% {
+    text-shadow: none; }
+  55% {
+    text-shadow: none; } }
+
+.battery {
+  color: #38475e;
+  background: rgba(45, 56, 74, 0.1);
+  border-radius: 6px;
+  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
+  margin: 6px 6px 3px 6px;
+  padding: 2px;
+  min-width: 24px; }
+
+.batLabel {
+  color: #ebefff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
+
+.batBar {
+  margin: 2px; }
+  .batBar trough {
+    border-radius: 6px;
+    min-width: 20px; }
+    .batBar trough progress {
+      border-radius: 6px;
+      min-width: 20px; }
+
+.batBar.low trough {
+  background: rgba(255, 99, 146, 0.5); }
+  .batBar.low trough progress {
+    background: #FF6392; }
+
+.batBar.med trough {
+  background: rgba(255, 228, 94, 0.5); }
+  .batBar.med trough progress {
+    background: #FFE45E; }
+
+.batBar.high trough {
+  background: rgba(127, 219, 156, 0.5); }
+  .batBar.high trough progress {
+    background: #7fdb9c; }
+
+.bar {
+  background: rgba(45, 56, 74, 0.1);
+  border-radius: 6px;
+  font-size: 12px; }
+
+.icon {
+  color: #ebefff;
+  background: rgba(45, 56, 74, 0.1);
+  font-weight: bold;
+  border-radius: 6px;
+  text-shadow: 0 0 0.5px #ebefff, 0 0 1px #ebefff, 0 0 2px #ebefff;
+  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
+  margin: 6px 6px 3px 6px;
+  padding: 6px; }
+
+.clock {
+  color: #ebefff;
+  background: rgba(45, 56, 74, 0.1);
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
+  margin: 6px;
+  padding: 6px; }

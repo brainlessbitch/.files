@@ -1,0 +1,6 @@
+*:not(tooltip):not(menu):not(menuitem) {
+	all: unset;
+    //-gtk-icon-theme: "adwaita";
+}
+
+@import './bar';

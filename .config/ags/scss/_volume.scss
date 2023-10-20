@@ -1,0 +1,25 @@
+@import './colors';
+
+$fg: $white1;
+$bg: $black;
+
+.volume {
+	color: $fg;
+	font-weight: bold;
+}
+
+.volBar {
+    margin: 0 2px 0 4px;
+    min-width: 50px;
+}
+
+.volBar trough highlight {
+    background-color: $fg;
+    border-radius: 1rem;
+    min-height: 6px;
+}
+
+.volBar trough {
+    background-color: #272d3c;
+    border-radius: 1rem;
+}
