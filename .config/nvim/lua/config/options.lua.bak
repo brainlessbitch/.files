@@ -1,0 +1,95 @@
+local opt = vim.opt
+local g = vim.g
+local s = vim.s
+local indent = 4
+
+vim.cmd([[
+	filetype plugin indent on
+]])
+
+opt.clipboard = "unnamedplus"
+
+-- indention
+opt.autoindent = true
+opt.expandtab = true
+opt.shiftround = true
+opt.shiftwidth = indent
+opt.smarttab = true
+opt.tabstop = indent
+opt.smartindent = true
+opt.softtabstop = indent
+
+-- search
+opt.hlsearch = true
+opt.ignorecase = true
+opt.incsearch = true
+opt.smartcase = true
+
+-- performance
+opt.lazyredraw = true
+opt.redrawtime = 1500
+opt.timeoutlen = 250
+opt.ttimeoutlen = 10
+opt.updatetime = 100
+
+-- text rendering
+opt.fileencoding = "utf-8"
+opt.linebreak = true
+opt.scrolloff = 18
+opt.sidescrolloff = 3
+opt.syntax = "enable"
+opt.wrap = false
+
+-- ui
+opt.laststatus = 2
+opt.wildmenu = true
+opt.cursorline = true
+opt.number = true
+opt.relativenumber = true
+opt.mouse = "a"
+opt.list = true
+
+-- misc
+opt.backspace = { "eol", "start", "indent" }
+--opt.backupdir =
+--opt.dir =
+opt.history = 100
+opt.modeline = false
+opt.spell = true
+
+opt.listchars = {
+    tab = "┊ ",
+    trail = "·",
+    extends = "»",
+    precedes = "«",
+    nbsp = "×"
+}
+
+opt.cmdheight = 0
+
+opt.signcolumn = "yes"
+
+-- backups
+opt.backup = false
+opt.swapfile = false
+opt.writebackup = false
+
+-- autocomplete
+opt.completeopt = {"menu", "menuone", "noselect"} -- mostly just for cmp
+
+-- theme
+opt.termguicolors = true -- enable 24-bit RGB colors
+
+-- persistent undo
+local undodir = vim.fn.stdpath("data") .. "/undo"
+opt.undofile = true
+opt.undodir = undodir
+opt.undolevels = 1000
+opt.undoreload = 10000
+
+-- Disable builtin plugins
+local disabled_built_ins = {}
+
+for _, plugin in pairs(disabled_built_ins) do
+    g["loaded_" .. plugin] = 1
+end
