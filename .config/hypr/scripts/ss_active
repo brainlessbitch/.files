@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+location=$(hyprctl activewindow | grep -o 'at: [0-9]*,[0-9]*' | awk '{print $2}')
+size=$(hyprctl activewindow | grep -o 'size: [0-9]*,[0-9]*' | awk '{print $2}' | tr ',' 'x')
+
+echo "$location $size"
+grim -g "$location $size" - | wl-copy

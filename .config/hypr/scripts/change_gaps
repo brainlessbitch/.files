@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "-out" ]; then
+    new_value="$2"
+    current_value=$(hyprctl getoption general:gaps_out | grep -oP 'int: \K\d+')
+    hyprctl --batch "keyword general:gaps_out $((current_value $2))"
+elif [ "$1" == "-in" ]; then
+    new_value="$2"
+    current_value=$(hyprctl getoption general:gaps_in | grep -oP 'int: \K\d+')
+    hyprctl --batch "keyword general:gaps_in $((current_value $2))"
+else echo "Usage: ./change_gaps [-in|-out] <value>"
+fi
