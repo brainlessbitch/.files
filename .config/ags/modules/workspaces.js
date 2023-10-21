@@ -25,7 +25,7 @@ export const Workspaces = () => {
                                 "dispatch",
                                 "workspace",
                                 ws.id.toString(),
-                            ]),
+                            ]).catch(console.error),
                     });
                     childrenList.push(btn);
                 }),
@@ -50,7 +50,7 @@ export const Workspaces2 = () => Widget.Box({
                 'dispatch',
                 'workspace',
                 `${i}`,
-            ]),
+            ]).catch(console.error),
         })),
         connections: [[Hyprland, box => box.children.forEach(btn => {
             btn.className = btn._index === Hyprland.active.workspace.id ? 'focused' : '';

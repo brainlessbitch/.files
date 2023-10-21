@@ -11,7 +11,7 @@ const OsIcon = () => Label({
 export const Icon = () => Box({
     className: 'icon',
     child: Button({
-        onClicked: () => execAsync(["wofi", "--show", "drun"]),
+        onClicked: () => execAsync(["wofi", "--show", "drun"]).catch(console.error),
         child: Box({
             child: OsIcon(),
         }),

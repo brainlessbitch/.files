@@ -11,7 +11,7 @@ const PickerIcon = () => Label({
 export const Colorpicker = () => Box({
     className: 'colorpicker',
     child: Button({
-        onClicked: () => execAsync(["hyprpicker", "-a"]),
+        onClicked: () => execAsync(["hyprpicker", "-a"]).catch(console.error),
         child: Box({
             child: PickerIcon(),
         }),
