@@ -5,13 +5,13 @@ const { Box, Button, Stack, Icon, Slider, Revealer, EventBox, Label } = Widget;
 
 const MusicContent = () => Widget.Box({
     vertical: true,
-    className: 'icon',
+    className: 'musicBox',
     children: [
         Box({
             className: 'musicCoverBackground',
             connections: [[
                 Mpris, (self) => {
-                    self.style = `background-image: url('${Mpris.getPlayer('')?._coverPath}');`;
+                    self.style = `background-image: url('${Mpris.getPlayer('')?.coverPath}');`;
                 }
             ]]
         }),

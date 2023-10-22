@@ -50,6 +50,47 @@ window#applauncher .applauncher {
   55% {
     text-shadow: none; } }
 
+window#applauncher .applauncher {
+  background: #000000; }
+
+.musicBox {
+  color: #ebefff;
+  background: rgba(45, 56, 74, 0.1);
+  font-weight: bold;
+  border-radius: 6px;
+  margin: 6px 6px 3px 6px;
+  padding: 6px; }
+  .musicBox button {
+    background: rgba(42, 51, 67, 0.3);
+    transition: all 0.24s cubic-bezier(0.42, 0, 1, 1); }
+    .musicBox button:hover {
+      background: rgba(51, 64, 84, 0.5);
+      text-shadow: 0 0 0.5px #ebefff, 0 0 1px #ebefff, 0 0 2px #ebefff; }
+
+.musicCoverBackground {
+  min-width: 200px;
+  min-height: 100px;
+  background: rgba(56, 71, 94, 0.5);
+  border-radius: 6px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  margin: 0 0 6px 0; }
+
+.musicText {
+  font-size: 1rem;
+  font-weight: 500; }
+
+.musicIcon {
+  min-width: 18px;
+  min-height: 18px;
+  color: #ebefff;
+  background: rgba(45, 56, 74, 0.1);
+  font-size: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
+  margin: 6px;
+  padding: 6px; }
+
 .battery {
   color: #38475e;
   background: rgba(45, 56, 74, 0.1);
@@ -93,6 +134,10 @@ window#applauncher .applauncher {
   background: rgba(45, 56, 74, 0.1);
   border-radius: 6px;
   font-size: 12px; }
+  .bar button {
+    transition: all 0.24s cubic-bezier(0.42, 0, 1, 1); }
+    .bar button:hover {
+      background: rgba(51, 64, 84, 0.5); }
 
 .icon {
   color: #ebefff;
@@ -111,32 +156,4 @@ window#applauncher .applauncher {
   border-radius: 6px;
   box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
   margin: 6px;
-  padding: 6px; }
-
-window#applauncher .applauncher {
-  background: #000000; }
-
-.musicCoverBackground {
-  min-width: 200px;
-  min-height: 100px;
-  background: orange;
-  border-radius: 10px;
-  background-repeat: no-repeat;
-  background-size: 100% auto; }
-
-.musicText {
-  text-shadow: 0 0 0.5px #ebefff, 0 0 1px #ebefff, 0 0 2px #ebefff;
-  font-size: 1rem;
-  font-weight: 500; }
-
-.musicIcon {
-  min-width: 18px;
-  min-height: 18px;
-  color: #ebefff;
-  background: rgba(45, 56, 74, 0.1);
-  font-size: 1rem;
-  border-radius: 6px;
-  text-shadow: 0 0 0.5px #ebefff, 0 0 1px #ebefff, 0 0 2px #ebefff;
-  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
-  margin: 6px 6px 3px 6px;
   padding: 6px; }

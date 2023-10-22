@@ -3,6 +3,7 @@
 
 // Bar components
 @import './workspaces';
+@import './music';
 @import './battery';
 
 $fg: $white1;
@@ -14,6 +15,12 @@ $neon: 0 0 0.5px $fg, 0 0 1px $fg, 0 0 2px $fg;
 	background: transparentize($black1, 0.9);
     border-radius: 6px;
     font-size: 12px;
+    button {
+        transition: all 0.24s cubic-bezier(.42, 0, 1, 1);
+        &:hover {
+			background: transparentize(mix($black1, $black2, 50%), 0.5);
+		}
+    }
 }
 
 .icon {

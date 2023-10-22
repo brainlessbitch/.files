@@ -1,17 +1,39 @@
 @import './colors';
 @import './launcher';
 
+$fg: $white1;
+$bg: $black;
+
+$neon: 0 0 0.5px $fg, 0 0 1px $fg, 0 0 2px $fg;
+
+.musicBox {
+	color: $fg;
+	background: transparentize($black1, 0.9);
+	font-weight: bold;
+	border-radius: 6px;
+    margin: 6px 6px 3px 6px;
+    padding: 6px;
+	button {
+		background: transparentize(mix($black, $black1, 50%), 0.7);
+		transition: all 0.24s cubic-bezier(.42, 0, 1, 1);
+		&:hover {
+			background: transparentize(mix($black1, $black2, 50%), 0.5);
+            text-shadow: $neon;
+		}
+	}
+}
+
 .musicCoverBackground {
     min-width: 200px;
     min-height: 100px;
-    background: orange;
-    border-radius: 10px;
+    background: transparentize($black2, 0.5);
+    border-radius: 6px;
     background-repeat: no-repeat;
     background-size: 100% auto;
+    margin: 0 0 6px 0;
 }
 
 .musicText {
-    text-shadow: $neon;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -23,8 +45,7 @@
     background: transparentize($black1, 0.9);
     font-size: 1rem;
     border-radius: 6px;
-    text-shadow: $neon;
     box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
-    margin: 6px 6px 3px 6px;
+    margin: 6px;
     padding: 6px;
 }
