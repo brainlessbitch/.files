@@ -4,7 +4,7 @@ import PopupWindow from './popupWindow.js';
 const { execAsync } = Utils;
 
 function launchApp(app) {
-    execAsync(`hyprctl dispatch exec ${app.executable}`);
+    execAsync(`hyprctl dispatch exec ${app.executable}`).catch(console.error);
     app.frequency += 1;
 }
 
