@@ -1,9 +1,14 @@
+// AGS
 import { Widget, App, Utils } from './imports.js';
 const { Box, CenterBox, Window } = Widget;
+// Bar widgets
 import { Icon } from './modules/icon.js';
 import { Workspaces, Workspaces2 } from './modules/workspaces.js';
 import { BatteryWidget } from './modules/battery.js';
+import { MusicWidget } from './modules/music.js';
 import { Clock } from './modules/clock.js';
+// Windows
+import { Music } from './modules/music/musicWindow.js';
 
 const Left = () => Box({
     className: 'barLeft',
@@ -23,6 +28,7 @@ const Right = () => Box({
     vertical: true,
     valign: 'end',
     children: [
+        MusicWidget(),
         BatteryWidget(),
         Clock(),
     ],
@@ -54,5 +60,6 @@ export default {
     style: `${App.configDir}/style.css`,
     windows: [
         Bar(),
+        Music(),
     ],
 };

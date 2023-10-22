@@ -112,3 +112,31 @@ window#applauncher .applauncher {
   box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
   margin: 6px;
   padding: 6px; }
+
+window#applauncher .applauncher {
+  background: #000000; }
+
+.musicCoverBackground {
+  min-width: 200px;
+  min-height: 100px;
+  background: orange;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: 100% auto; }
+
+.musicText {
+  text-shadow: 0 0 0.5px #ebefff, 0 0 1px #ebefff, 0 0 2px #ebefff;
+  font-size: 1rem;
+  font-weight: 500; }
+
+.musicIcon {
+  min-width: 18px;
+  min-height: 18px;
+  color: #ebefff;
+  background: rgba(45, 56, 74, 0.1);
+  font-size: 1rem;
+  border-radius: 6px;
+  text-shadow: 0 0 0.5px #ebefff, 0 0 1px #ebefff, 0 0 2px #ebefff;
+  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
+  margin: 6px 6px 3px 6px;
+  padding: 6px; }

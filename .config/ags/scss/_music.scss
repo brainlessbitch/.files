@@ -1,0 +1,30 @@
+@import './colors';
+@import './launcher';
+
+.musicCoverBackground {
+    min-width: 200px;
+    min-height: 100px;
+    background: orange;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.musicText {
+    text-shadow: $neon;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.musicIcon {
+    min-width: 18px;
+    min-height: 18px;
+    color: $fg;
+    background: transparentize($black1, 0.9);
+    font-size: 1rem;
+    border-radius: 6px;
+    text-shadow: $neon;
+    box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
+    margin: 6px 6px 3px 6px;
+    padding: 6px;
+}
