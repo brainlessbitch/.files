@@ -1,0 +1,22 @@
+.todo {
+    color: $fg;
+    background: $bg;
+    border-radius: 12px;
+    min-width: 12rem;
+    padding: 6px;
+}
+
+.todoHeader {
+    font-size: 24px;
+    margin: 0 0 0 12px;
+}
+
+.todoTasks {}
+
+.todoTask {
+    background: $bg1;
+    border-radius: 12px;
+    margin: 6px;
+    padding: 3px;
+    min-width: 12rem;
+}

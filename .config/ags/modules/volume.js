@@ -5,7 +5,7 @@ const VolumeIcon = () => Box({
   className: 'volIcon',
     children: [
       Stack({
-        style: 'font-size: 16px;',
+        style: 'font-size: 1rem;',
         items: [
             ['101', Widget.Label('󰕾\u{2009}')],
             ['67', Widget.Label('󰕾\u{2009}')],
@@ -17,7 +17,7 @@ const VolumeIcon = () => Box({
           if (!Audio.speaker)
               return;
 
-          if (Audio.speaker.isMuted) {
+          if (Audio.speaker.stream.isMuted) {
             stack.shown = '0';
             return;
           }
@@ -37,7 +37,6 @@ const PercentBar = () => Revealer({
   revealChild: false,
   child: Slider({
     className: 'volBar',
-    hexpand: true,
     drawValue: false,
     onChange: ({ value }) => Audio.speaker.volume = value,
     connections: [[Audio, slider => {
@@ -59,13 +58,12 @@ export const Volume = () => Box({
         const [_, x, y] = event.get_coords()
         const w = widget.get_allocation().width;
         const h = widget.get_allocation().height;
-        if (x < 0 || x > w || y < 0 || y > h) { percentBar.revealChild = false }
-        },
+        if (x < 0 || x > w || y < 0 || y > h) { percentBar.revealChild = false }},
         //connections: [[Audio, box => {box.set_tooltip_text(`${String(Math.floor(Audio.speaker.volume * 100))}%`)}, 'speaker-changed']],
         child: Box({
             children: [
                 VolumeIcon(),
-                percentBar
+                percentBar,
             ]
         }),
     }),

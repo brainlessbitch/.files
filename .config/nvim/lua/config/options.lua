@@ -1,6 +1,7 @@
 local cmd = vim.cmd
 local opt = vim.opt
 local g = vim.g
+local o = vim.o
 local s = vim.s
 local indent = 4
 
@@ -108,13 +109,28 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 -- Colorscheme
-vim.cmd.colorscheme("chi-tsuki")
+cmd.colorscheme("adwaita")
+
+-- Italicized comments
+cmd.hi("Comment gui='italic'")
 
 -- Set transparency
-local transparent = true
+local transparent = false
 if transparent == true then
-    cmd.hi"Normal ctermbg=none guibg=none"
-    cmd.hi"NormalNC ctermbg=none guibg=none"
-    cmd.hi"LineNr ctermbg=none guibg=none"
-    cmd.hi"SignColumn ctermbg=none guibg=none"
+    cmd.hi("Normal ctermbg=none guibg=none")
+    cmd.hi("NormalNC ctermbg=none guibg=none")
+    cmd.hi("LineNr ctermbg=none guibg=none")
+    cmd.hi("SignColumn ctermbg=none guibg=none")
+end
+
+-- Neovide
+if g.neovide then
+    o.guifont = "Maple Mono NF:h10"
+    g.neovide_padding_top = 10
+    g.neovide_padding_bottom = 10
+    g.neovide_padding_right = 10
+    g.neovide_padding_left = 10
+    g.neovide_transparency = 0.9
+    g.neovide_theme = 'light'
+    g.neovide_cursor_vfx_mode = "pixiedust"
 end

@@ -1,159 +1,130 @@
-*:not(tooltip):not(menu):not(menuitem) {
+*:not(tooltip):not(menubar):not(menu):not(menuitem) {
   all: unset; }
 
-window#applauncher .applauncher {
-  background: #000000; }
-
 .workspaces {
-  color: #ebefff;
-  background: rgba(45, 56, 74, 0.1);
-  font-weight: bold;
-  border-radius: 6px;
-  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
-  margin: 3px 6px 6px 6px;
-  padding: 2px;
-  transition: all 2s;
-  min-height: 100px; }
+  min-width: 5rem; }
   .workspaces button {
-    background: rgba(42, 51, 67, 0.3);
-    border-radius: 6px;
-    box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.25);
-    margin: 0 2px 2px;
-    transition: all 0.24s cubic-bezier(0.42, 0, 1, 1); }
+    background: #f2f2f2;
+    border: 2px solid gainsboro;
+    border-radius: 24px;
+    min-height: 0.5rem;
+    min-width: 0.5rem;
+    margin: 0.5rem 2px;
+    transition: background 0.2s cubic-bezier(0, 0, 1, 1), border 0.25s cubic-bezier(0, 0, 1, 1); }
     .workspaces button:hover {
-      background: rgba(51, 64, 84, 0.5); }
+      background: #c6c6c6;
+      border: 2px solid #c6c6c6; }
   .workspaces button.focused {
-    background: rgba(56, 71, 94, 0.7);
-    font-weight: bolder;
-    border-radius: 6px;
-    animation: flicker 1.5s infinite alternate; }
+    background: #999999;
+    border: 2px solid #999999; }
 
-@keyframes flicker {
-  0% {
-    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
-  18% {
-    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
-  22% {
-    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
-  25% {
-    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
-  53% {
-    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
-  57% {
-    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
-  100% {
-    text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
-  20% {
-    text-shadow: none; }
-  24% {
-    text-shadow: none; }
-  55% {
-    text-shadow: none; } }
+.volume {
+  background: #f2f2f2;
+  border-radius: 12px 0 0 12px;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0.75rem; }
 
-window#applauncher .applauncher {
-  background: #000000; }
+.volIcon {
+  margin: 1px 0 0 0; }
 
-.musicBox {
-  color: #ebefff;
-  background: rgba(45, 56, 74, 0.1);
-  font-weight: bold;
-  border-radius: 6px;
-  margin: 6px 6px 3px 6px;
+.volBar {
+  margin: 0 0 0 0.25rem;
+  min-width: 50px; }
+
+.volBar trough highlight {
+  background: #999999;
+  border-radius: 0;
+  min-height: 0.25rem; }
+
+.volBar trough {
+  background: none;
+  border: 2px solid #999999;
+  border-radius: 1rem; }
+
+.desktopMenu {
+  color: #999999;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  margin: 0;
   padding: 6px; }
-  .musicBox button {
-    background: rgba(42, 51, 67, 0.3);
-    transition: all 0.24s cubic-bezier(0.42, 0, 1, 1); }
-    .musicBox button:hover {
-      background: rgba(51, 64, 84, 0.5);
-      text-shadow: 0 0 0.5px #ebefff, 0 0 1px #ebefff, 0 0 2px #ebefff; }
 
-.musicCoverBackground {
-  min-width: 200px;
-  min-height: 100px;
-  background: rgba(56, 71, 94, 0.5);
-  border-radius: 6px;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  margin: 0 0 6px 0; }
+.desktopMenuItem {
+  color: #999999;
+  border-radius: 12px;
+  padding: 3px 6px; }
+  .desktopMenuItem:hover {
+    background: #f2f2f2; }
 
-.musicText {
-  font-size: 1rem;
-  font-weight: 500; }
+.dock {
+  background: #f2f2f2;
+  border-radius: 12px; }
 
-.musicIcon {
-  min-width: 18px;
-  min-height: 18px;
-  color: #ebefff;
-  background: rgba(45, 56, 74, 0.1);
-  font-size: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
+.dockIcon {
+  margin: 3px 1px; }
+
+.dockIcons {
+  margin: 6px; }
+
+tooltip {
+  color: #f2f2f2; }
+
+.todo {
+  color: #999999;
+  background: #f2f2f2;
+  border-radius: 12px;
+  min-width: 12rem;
+  padding: 6px; }
+
+.todoHeader {
+  font-size: 24px;
+  margin: 0 0 0 12px; }
+
+.todoTask {
+  background: #ffffff;
+  border-radius: 12px;
   margin: 6px;
-  padding: 6px; }
-
-.battery {
-  color: #38475e;
-  background: rgba(45, 56, 74, 0.1);
-  border-radius: 6px;
-  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
-  margin: 6px 6px 3px 6px;
-  padding: 2px;
-  min-width: 24px; }
-
-.batLabel {
-  color: #ebefff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-shadow: 0 0 2px #ebefff, 0 0 4px #ebefff, 0 0 8px #ebefff; }
-
-.batBar {
-  margin: 2px; }
-  .batBar trough {
-    border-radius: 6px;
-    min-width: 20px; }
-    .batBar trough progress {
-      border-radius: 6px;
-      min-width: 20px; }
-
-.batBar.low trough {
-  background: rgba(255, 99, 146, 0.5); }
-  .batBar.low trough progress {
-    background: #FF6392; }
-
-.batBar.med trough {
-  background: rgba(255, 228, 94, 0.5); }
-  .batBar.med trough progress {
-    background: #FFE45E; }
-
-.batBar.high trough {
-  background: rgba(127, 219, 156, 0.5); }
-  .batBar.high trough progress {
-    background: #7fdb9c; }
+  padding: 3px;
+  min-width: 12rem; }
 
 .bar {
-  background: rgba(45, 56, 74, 0.1);
-  border-radius: 6px;
-  font-size: 12px; }
-  .bar button {
-    transition: all 0.24s cubic-bezier(0.42, 0, 1, 1); }
-    .bar button:hover {
-      background: rgba(51, 64, 84, 0.5); }
+  background: transparent; }
 
-.icon {
-  color: #ebefff;
-  background: rgba(45, 56, 74, 0.1);
+.barLeft {
+  color: #999999;
+  background: #f2f2f2;
+  font-size: 12px;
+  border-radius: 12px;
+  padding: 0 0.5rem; }
+
+.barRight {
+  color: #999999;
+  background: #f2f2f2;
+  font-size: 12px;
   font-weight: bold;
-  border-radius: 6px;
-  text-shadow: 0 0 0.5px #ebefff, 0 0 1px #ebefff, 0 0 2px #ebefff;
-  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
-  margin: 6px 6px 3px 6px;
-  padding: 6px; }
+  border-radius: 12px; }
+
+.separator {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0.25rem 2px; }
+
+.clientTitle {
+  margin: 0 2px 1px; }
+
+.battery {
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0 0.5rem 0 0.25rem; }
+
+.batIcon {
+  margin: 0; }
 
 .clock {
-  color: #ebefff;
-  background: rgba(45, 56, 74, 0.1);
-  font-weight: bold;
-  border-radius: 6px;
-  box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
-  margin: 6px;
-  padding: 6px; }
+  background: #f2f2f2;
+  border-radius: 3px 12px 12px 3px;
+  margin: 0 0 0 0.5rem;
+  padding: 0 0.75rem 0 0; }
+
+.clockIcon {
+  margin: 0 0.5rem 0 0.5rem; }

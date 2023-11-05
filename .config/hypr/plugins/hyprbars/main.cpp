@@ -19,30 +19,67 @@ void onNewWindow(void* self, std::any data) {
     // data is guaranteed
     auto* const PWINDOW = std::any_cast<CWindow*>(data);
 
-    if (!PWINDOW->m_bX11DoesntWantBorders)
-        HyprlandAPI::addWindowDecoration(PHANDLE, PWINDOW, new CHyprBar(PWINDOW));
+    if (!PWINDOW->m_bX11DoesntWantBorders) {
+        CHyprBar* bar = new CHyprBar(PWINDOW);
+        HyprlandAPI::addWindowDecoration(PHANDLE, PWINDOW, static_cast<IHyprWindowDecoration*>(bar));
+        g_pGlobalState->bars.push_back(bar);
+    }
+}
+
+void onPreConfigReload() {
+    g_pGlobalState->buttons.clear();
+}
+
+void onNewButton(const std::string& k, const std::string& v) {
+    CVarList vars(v);
+
+    // hyprbars-button = color, size, icon, action
+
+    if (vars[0].empty() || vars[1].empty())
+        return;
+
+    float size = 10;
+    try {
+        size = std::stof(vars[1]);
+    } catch (std::exception& e) { return; }
+
+    g_pGlobalState->buttons.push_back(SHyprButton{vars[3], configStringToInt(vars[0]), size, vars[2]});
+
+    for (auto& b : g_pGlobalState->bars) {
+        b->m_bButtonsDirty = true;
+    }
 }
 
 APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     PHANDLE = handle;
 
-    HyprlandAPI::registerCallbackDynamic(PHANDLE, "openWindow", [&](void* self, std::any data) { onNewWindow(self, data); });
+    const std::string HASH = __hyprland_api_get_hash();
+
+    if (HASH != GIT_COMMIT_HASH) {
+        HyprlandAPI::addNotification(PHANDLE, "[hyprbars] Failure in initialization: Version mismatch (headers ver is not equal to running hyprland ver)",
+                                     CColor{1.0, 0.2, 0.2, 1.0}, 5000);
+        throw std::runtime_error("[hb] Version mismatch");
+    }
+
+    g_pGlobalState = std::make_unique<SGlobalState>();
+
+    HyprlandAPI::registerCallbackDynamic(PHANDLE, "openWindow", [&](void* self, SCallbackInfo& info, std::any data) { onNewWindow(self, data); });
 
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_color", SConfigValue{.intValue = configStringToInt("rgba(33333388)")});
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_height", SConfigValue{.intValue = 15});
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:col.text", SConfigValue{.intValue = configStringToInt("rgba(ffffffff)")});
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_text_size", SConfigValue{.intValue = 10});
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_text_font", SConfigValue{.strValue = "Sans"});
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:buttons:col.close", SConfigValue{.intValue = configStringToInt("rgba(cc0000cc)")});
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:buttons:col.maximize", SConfigValue{.intValue = configStringToInt("rgba(ffff33cc)")});
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:buttons:button_size", SConfigValue{.intValue = 10});
+
+    HyprlandAPI::addConfigKeyword(PHANDLE, "hyprbars-button", [&](const std::string& k, const std::string& v) { onNewButton(k, v); });
+    HyprlandAPI::registerCallbackDynamic(PHANDLE, "preConfigReload", [&](void* self, SCallbackInfo& info, std::any data) { onPreConfigReload(); });
 
     // add deco to existing windows
     for (auto& w : g_pCompositor->m_vWindows) {
         if (w->isHidden() || !w->m_bIsMapped)
             continue;
 
-        HyprlandAPI::addWindowDecoration(PHANDLE, w.get(), new CHyprBar(w.get()));
+        onNewWindow(nullptr /* unused */, std::any(w.get()));
     }
 
     HyprlandAPI::reloadConfig();

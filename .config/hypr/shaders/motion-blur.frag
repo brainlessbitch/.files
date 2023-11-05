@@ -3,19 +3,26 @@
 precision mediump float;
 varying vec2 v_texcoord;
 uniform sampler2D tex;
+uniform float blurFactor;
+uniform vec2 resolution;
 
-#define STRENGTH 0.1
+const int numSamples = 120;
+
+uniform sampler2D accumulator;
 
 void main() {
-    vec4 color = texture2D(tex, v_texcoord);
+    float blurFactor = 120.0;
 
-    vec2 offset = vec2(0.0, 0.0);
-    for (float i = 1.0; i <= 10.0; i += 1.0)
-    {
-        offset += texture2D(tex, v_texcoord - i * STRENGTH).rgb;
-    }
+    vec4 currentColor = texture2D(tex, v_texcoord);
+    vec4 prevColor = texture2D(accumulator, v_texcoord);
 
-    color.rgb = (color.rgb + offset) / 11.0;
+    vec2 velocity = (v_texcoord - gl_FragCoord.xy / resolution) * 2.0;
 
-    gl_FragColor = color;
+    vec4 colorDiff = currentColor - prevColor;
+
+    float motionBlur = length(velocity) * blurFactor;
+
+    vec4 finalColor = prevColor + colorDiff * 2.0;
+
+    gl_FragColor = finalColor;
 }

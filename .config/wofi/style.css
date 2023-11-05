@@ -1,0 +1,27 @@
+*:not(#scroll) {
+  all: unset; }
+
+#input {
+  color: #999999;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 24px;
+  margin: 6px;
+  padding: 6px; }
+  #input > image.left {
+    color: #999999;
+    margin: 0 6px; }
+  #input > image.right {
+    color: #999999;
+    margin: 0 6px; }
+
+#entry {
+  color: #999999;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 24px;
+  margin: 3px 24px;
+  padding: 6px 12px;
+  transition: all 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
+  #entry:selected {
+    background: #cccccc; }

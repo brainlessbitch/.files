@@ -1,4 +1,4 @@
-*:not(tooltip):not(menu):not(menuitem) {
+*:not(tooltip):not(menubar):not(menu):not(menuitem) {
 	all: unset;
     //-gtk-icon-theme: "adwaita";
 }

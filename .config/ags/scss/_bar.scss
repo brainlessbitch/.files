@@ -1,45 +1,67 @@
+// Colors
 @import './colors';
-@import './launcher';
 
-// Bar components
+// Components
 @import './workspaces';
-@import './music';
-@import './battery';
-
-$fg: $white1;
-$bg: transparent;
-
-$neon: 0 0 0.5px $fg, 0 0 1px $fg, 0 0 2px $fg;
+@import './volume';
+@import './desktop';
+@import './dock';
+@import './todo';
 
 .bar {
-	background: transparentize($black1, 0.9);
-    border-radius: 6px;
-    font-size: 12px;
-    button {
-        transition: all 0.24s cubic-bezier(.42, 0, 1, 1);
-        &:hover {
-			background: transparentize(mix($black1, $black2, 50%), 0.5);
-		}
-    }
+    background: transparent;
 }
 
-.icon {
-	color: $fg;
-	background: transparentize($black1, 0.9);
-	font-weight: bold;
-	border-radius: 6px;
-    text-shadow: $neon;
-    box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
-    margin: 6px 6px 3px 6px;
-    padding: 6px;
+.barLeft {
+    color: $fg;
+    background: $bg;
+    font-size: 12px;
+    border-radius: 12px;
+    padding: 0 0.5rem;
 }
+
+.barRight {
+    color: $fg;
+    background: $bg;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 12px;
+    //padding: 0 0.5rem;
+}
+
+.separator {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0.25rem 2px;
+}
+
+.clientTitle {
+    margin: 0 2px 1px;
+}
+
+.battery {
+    background: $bg;
+    margin: 0;
+    padding: 0 0.5rem 0 0.25rem;
+}
+
+.batIcon {
+    margin: 0;
+}
+
+.batLabel {}
 
 .clock {
-	color: $fg;
-	background: transparentize($black1, 0.9);
-	font-weight: bold;
-	border-radius: 6px;
-    box-shadow: 0 2px 2.4px rgba(0, 0, 0, 0.5);
-    margin: 6px;
-    padding: 6px;
+    background: $bg;
+    border-radius: 3px 12px 12px 3px;
+    margin: 0 0 0 0.5rem;
+    padding: 0 0.75rem 0 0;
 }
+
+.clockIcon {
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+.tray {}
+
+.trayIcon {}

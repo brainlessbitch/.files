@@ -31,6 +31,11 @@ autocmd("Filetype", {
 })
 
 autocmd("BufWritePost", {
-    pattern = "style.scss",
+    pattern = os.getenv( "HOME" ) .. "/.config/wofi/style.scss",
     command = ":! sassc ./style.scss ./style.css"
+})
+
+autocmd("BufWritePost", {
+    pattern = os.getenv( "HOME" ) .. "/.themes/notifs/xfce-notify-4.0/gtk.scss",
+    command = ":! sassc ./gtk.scss ./gtk.css"
 })

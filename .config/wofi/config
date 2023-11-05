@@ -1,0 +1,11 @@
+width=25%
+height=50%
+prompt=Search...
+allow_images=false
+term=foot
+hide-scroll=true
+location=top
+no_actions=true
+columns=1
+gtk_dark=true
+image_size=0

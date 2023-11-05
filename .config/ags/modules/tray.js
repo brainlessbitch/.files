@@ -14,14 +14,10 @@ const TrayRev = () => Revealer({
     connections: [[SystemTray, box => {
       box.className = 'tray'
       box.children = SystemTray.items.map(item => Button({
-        child: Icon(),
-        className: "trayIcon",
+        child: Icon({ binds: [['icon', item, 'icon']] }),
         onPrimaryClick: (_, event) => item.activate(event),
-        onSecondaryClick: (_, event) => item.openMenu(event),
-        connections: [[item, button => {
-        button.child.icon = item.icon;
-        button.tooltipMarkup = item.tooltipMarkup;
-        }]],
+        //onSecondaryClick: (_, event) => item.openMenu(event),
+        binds: [['tooltip-markup', item, 'tooltip-markup']],
       }));
     }]],
   }),
