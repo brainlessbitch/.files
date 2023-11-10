@@ -2,38 +2,40 @@
   all: unset; }
 
 .workspaces {
-  min-width: 5rem; }
+  background: #f2f2f2;
+  border-radius: 24px;
+  min-width: 8px;
+  padding: 6px; }
   .workspaces button {
     background: #f2f2f2;
     border: 2px solid gainsboro;
     border-radius: 24px;
-    min-height: 0.5rem;
-    min-width: 0.5rem;
-    margin: 0.5rem 2px;
-    transition: background 0.2s cubic-bezier(0, 0, 1, 1), border 0.25s cubic-bezier(0, 0, 1, 1); }
+    min-height: 6px;
+    min-width: 6px;
+    margin: 0 2px;
+    transition: all 0.2s cubic-bezier(0, 0, 1, 1), border 0.25s cubic-bezier(0, 0, 1, 1); }
     .workspaces button:hover {
       background: #c6c6c6;
       border: 2px solid #c6c6c6; }
-  .workspaces button.focused {
-    background: #999999;
-    border: 2px solid #999999; }
+    .workspaces button.focused {
+      background: #999999;
+      border: 2px solid #999999;
+      min-width: 18px; }
 
 .volume {
   background: #f2f2f2;
-  border-radius: 12px 0 0 12px;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0.75rem; }
+  padding: 0 0 0 6px; }
 
 .volIcon {
-  margin: 1px 0 0 0; }
+  font-family: SymbolsNerdFontMono;
+  font-size: 12px; }
 
 .volBar {
-  margin: 0 0 0 0.25rem;
-  min-width: 50px; }
+  min-width: 50px;
+  padding: 0 0 0 3px; }
 
 .volBar trough highlight {
   background: #999999;
-  border-radius: 0;
   min-height: 0.25rem; }
 
 .volBar trough {
@@ -41,12 +43,23 @@
   border: 2px solid #999999;
   border-radius: 1rem; }
 
+.battery {
+  background: #f2f2f2;
+  border-radius: 0 24px 24px 0;
+  padding: 0 8px 1px 3px; }
+
+.batIcon {
+  font-family: SymbolsNerdFontMono;
+  font-size: 12px; }
+
+.batLabel {
+  font-weight: bold; }
+
 .desktopMenu {
   color: #999999;
   background: #ffffff;
   border: 2px solid #ffffff;
   border-radius: 12px;
-  margin: 0;
   padding: 6px; }
 
 .desktopMenuItem {
@@ -69,62 +82,89 @@
 tooltip {
   color: #f2f2f2; }
 
-.todo {
+.launcher {
   color: #999999;
-  background: #f2f2f2;
-  border-radius: 12px;
-  min-width: 12rem;
+  background: #ffffff;
   padding: 6px; }
 
-.todoHeader {
-  font-size: 24px;
-  margin: 0 0 0 12px; }
-
-.todoTask {
-  background: #ffffff;
+.launcherEntry {
+  caret-color: #999999;
+  background: #f2f2f2;
   border-radius: 12px;
-  margin: 6px;
-  padding: 3px;
-  min-width: 12rem; }
+  padding: 3px 12px;
+  margin: 6px; }
 
-.bar {
+.launcherItem {
+  margin: 3px; }
+  .launcherItem:focus {
+    background: #f2f2f2; }
+
+.launcherItemIcon {
+  margin: 3px; }
+
+.launcherItemTitle {
+  font-size: 16px;
+  font-weight: bold; }
+
+.launcherItemDescription {
+  font-size: 12px; }
+
+.volumePopup {
   background: transparent; }
 
-.barLeft {
-  color: #999999;
-  background: #f2f2f2;
+.volPopupIcon {
+  font-family: SymbolsNerdFontMono;
   font-size: 12px;
-  border-radius: 12px;
-  padding: 0 0.5rem; }
+  padding: 6px; }
 
-.barRight {
+.volPopupBar {
+  min-height: 100px;
+  min-width: 1rem;
+  margin: 0.5rem; }
+
+.volPopupBar scale {
+  min-width: 1rem; }
+
+.volPopupBar trough {
+  background: #f2f2f2;
+  border-radius: 1rem;
+  min-width: 0.5rem; }
+
+.volPopupBar highlight {
+  background: #999999;
+  border-radius: 1rem;
+  min-height: 1rem;
+  margin: -0.5rem;
+  padding: 6px; }
+
+.bar {
   color: #999999;
-  background: #f2f2f2;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 12px; }
-
-.separator {
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0 0.25rem 2px; }
-
-.clientTitle {
-  margin: 0 2px 1px; }
-
-.battery {
-  background: #f2f2f2;
-  margin: 0;
-  padding: 0 0.5rem 0 0.25rem; }
-
-.batIcon {
-  margin: 0; }
-
-.clock {
-  background: #f2f2f2;
-  border-radius: 3px 12px 12px 3px;
-  margin: 0 0 0 0.5rem;
-  padding: 0 0.75rem 0 0; }
+  background: transparent;
+  font-family: Roboto;
+  font-size: 13px; }
 
 .clockIcon {
-  margin: 0 0.5rem 0 0.5rem; }
+  font-family: SymbolsNerdFontMono;
+  font-size: 12px; }
+
+.dateLabel {
+  background: #f2f2f2;
+  font-weight: bold;
+  border-radius: 24px 3px 3px 24px;
+  padding: 0 6px 0 12px;
+  margin: 0 3px; }
+
+.timeLabel {
+  background: #f2f2f2;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 0 6px;
+  margin: 0 3px; }
+
+.wifiIcon {
+  background: #f2f2f2;
+  font-family: SymbolsNerdFontMono;
+  font-size: 12px;
+  border-radius: 3px 0 0 3px;
+  padding: 0 0 0 8px;
+  margin: 0 0 0 3px; }

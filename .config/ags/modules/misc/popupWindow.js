@@ -13,9 +13,9 @@ export default ({
         ...props,
 
         child: Box({
-            style: `min-height:1px;
-                    min-width:1px;
-                    padding: 1px;`,
+            css: `min-height: 1px;
+                  min-width: 1px;
+                  padding:  1px;`,
             child: Revealer({
                 transition,
                 transitionDuration: 500,

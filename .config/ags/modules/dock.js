@@ -40,7 +40,7 @@ function focus(appName) {
 function numOpen(appName) {
     return tasks.filter(i => i === appName).map(() => {
         const callback = box => {
-            return box.style = `
+            return box.css = `
                 min-width: ${24 / tasks.filter(i => i === appName).length}px;
                 min-height: 2px;
                 background: rgba(0, 0, 0, 0.5);
@@ -68,8 +68,8 @@ const DockPins = () => Box({
             }),
             overlays: [
                 Box({
-                    valign: 'end',
-                    halign: 'center',
+                    vpack: 'end',
+                    hpack: 'center',
                     connections: [
                         [Hyprland, box => {
                             box.visible = tasks.filter(i => pins.includes(i)).includes(appName);
@@ -96,8 +96,8 @@ const DockTasks = () => Box({
                     }),
                     overlays: [
                         Box({
-                            valign: 'end',
-                            halign: 'center',
+                            vpack: 'end',
+                            hpack: 'center',
                             children: tasks.filter(i => i === appName).length > 1 ? numOpen(appName) : []
                         })
                     ]
@@ -120,13 +120,14 @@ const toggleDock = () => {
 Hyprland.connect('changed', toggleDock);
 
 const Separator = () => Box({
-    style: `
+    css: `
         min-width: 2px;
         min-height: 24px;
         background: rgba(0, 0, 0, 0.5);
+        border-radius: 6px;
     `,
-    valign: 'center',
-    halign: 'center',
+    vpack: 'center',
+    hpack: 'center',
     connections: [
         [Hyprland, box => {
             box.visible = tasks.filter(i => !pins.includes(i)).length > 0;
@@ -139,7 +140,7 @@ export const Dock = () => PopupWindow({
     className: 'dock',
     anchor: ['bottom'],
     layer: 'bottom',
-    margin: [0, 0, 6, 0],
+    margins: [0, 0, 6, 0],
     transition: 'slide_up',
     child: Box({
         children: [

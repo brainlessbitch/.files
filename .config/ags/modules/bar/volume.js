@@ -1,17 +1,16 @@
-import { Audio, Widget } from '../imports.js';
+import { Audio, Widget } from '../../imports.js';
 const { Box, Stack, Icon, Slider, Revealer, EventBox, Label } = Widget;
 
 const VolumeIcon = () => Box({
   className: 'volIcon',
     children: [
       Stack({
-        style: 'font-size: 1rem;',
         items: [
-            ['101', Widget.Label('󰕾\u{2009}')],
-            ['67', Widget.Label('󰕾\u{2009}')],
-            ['34', Widget.Label('󰖀\u{2009}')],
-            ['1', Widget.Label('󰕿\u{2009}')],
-            ['0', Widget.Label('󰝟\u{2009}')],
+            ['101', Widget.Label('󰕾')],
+            ['67', Widget.Label('󰕾')],
+            ['34', Widget.Label('󰖀')],
+            ['1', Widget.Label('󰕿')],
+            ['0', Widget.Label('󰝟')],
         ],
         connections: [[Audio, stack => {
           if (!Audio.speaker)

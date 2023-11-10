@@ -3,31 +3,24 @@ import { Widget, App, Utils } from './imports.js';
 const { Box, CenterBox, Window } = Widget;
 
 // Bar widgets
-import { BatteryWidget } from './modules/battery.js';
-import { Volume } from './modules/volume.js';
-import { Clock } from './modules/clock.js';
-import Tray from './modules/tray.js';
-import { ClientTitle } from './modules/client.js';
-import { Workspaces } from './modules/workspaces.js';
+import { Workspaces } from './modules/bar/workspaces.js';
+import Tray from './modules/bar/tray.js';
+import { Volume } from './modules/bar/volume.js';
+import { BatteryWidget } from './modules/bar/battery.js';
+import { Clock } from './modules/bar/clock.js';
 
 // Windows
 import { DesktopMenu } from './modules/desktop.js';
 import { Dock } from './modules/dock.js';
-import { Todo } from './modules/todo.js';
-
-const UwUButton = () => Widget.Button({
-    className: 'button',
-    child: Widget.Label('UwU'),
-    onPrimaryClick: () => console.log('UwU'),
-});
+import { launcher } from './modules/launcher/launcher.js';
+import { VolumePopup } from './modules/volumePopup.js';
+//import { BrightnessPopup } from './modules/brightnessPopup.js';
 
 const Left = () => Box({
     child: Box({
         className: 'barLeft',
         children: [
-            Workspaces(),
-            /*Sep(),
-            ClientTitle(),*/
+            Workspaces()
         ],
     }),
 });
@@ -38,28 +31,32 @@ const Center = () => Box({
 
 const Right = () => Box({
     className: 'barRight',
-    style: 'background: transparent;',
-    halign: 'end',
+    css: 'background: transparent;',
+    hpack: 'end',
     children: [
         //Tray(),
-        Volume(),
-        BatteryWidget(),
         Clock(),
+        Widget.Label({
+            className: 'wifiIcon',
+            label: '󰤨'
+        }),
+        //Volume(),
+        BatteryWidget()
     ],
 });
 
 const Bar = ({ monitor } = {}) => Window({
     className: 'bar',
-    name: `bar`,
+    name: 'bar',
     anchor: ['top', 'left', 'right'],
     exclusive: true,
-    layer: "bottom",
-    margin: [6, 6, 0, 6],
+    layer: 'bottom',
+    margins: [6, 6, 0, 6],
     monitor,
     child: CenterBox({
         startWidget: Left(),
         centerWidget: Center(),
-        endWidget: Right(),
+        endWidget: Right()
     }),
 })
 
@@ -75,6 +72,8 @@ export default {
         Bar(),
         DesktopMenu(),
         Dock(),
-        //Todo(),
+        launcher,
+        VolumePopup(),
+        //BrightnessPopup()
     ],
 };

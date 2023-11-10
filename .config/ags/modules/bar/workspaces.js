@@ -1,4 +1,4 @@
-import { Utils, Widget, Service, Hyprland } from '../imports.js';
+import { Utils, Widget, Service, Hyprland } from '../../imports.js';
 const { execAsync } = Utils;
 const { Box, Button, Label } = Widget;
 
@@ -22,7 +22,7 @@ export const Workspaces = () => Widget.Box({
         })),
         connections: [[Hyprland, box => box.children.forEach(btn => {
             btn.className = btn._index === Hyprland.active.workspace.id ? 'focused' : '';
-            btn.style = `min-width: ${5/Hyprland.workspaces.length}rem`;
+            //btn.style = `min-width: ${5/Hyprland.workspaces.length}rem`;
             btn.visible = Hyprland.workspaces.some(ws => ws.id === btn._index);
         })]],
     }),
