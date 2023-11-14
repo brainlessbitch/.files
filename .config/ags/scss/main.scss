@@ -3,4 +3,13 @@
     //-gtk-icon-theme: "adwaita";
 }
 
-@import './bar';
+// Colors
+@import './colors';
+
+// Components
+@import './bar/bar';
+@import './desktop';
+@import './dock';
+@import './launcher/launcher';
+@import './brightnessPopup';
+@import './volumePopup';

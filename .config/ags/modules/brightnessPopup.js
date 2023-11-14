@@ -1,24 +1,22 @@
 import { Widget, Utils, App } from '../imports.js';
-const { Box, Stack, Slider, Label } = Widget;
 import Brightness from '../services/brightness.js';
-import PopupWindow from './misc/popupWindow.js';
 
-const BrightnessIcon = () => Box({
-  className: 'volPopupIcon',
+const BrightnessIcon = () => Widget.Box({
+  className: 'brtPopupIcon',
     children: [
-      Stack({
+      Widget.Stack({
         items: [
-            ['101', Widget.Label('󰃠')],
-            ['85', Widget.Label('󰃟')],
-            ['68', Widget.Label('󰃞')],
-            ['51', Widget.Label('󰃝')],
-            ['34', Widget.Label('󰃜')],
-            ['1', Widget.Label('󰃛')],
+            ['75', Widget.Label('󰃠')],
+            ['62', Widget.Label('󰃟')],
+            ['50', Widget.Label('󰃞')],
+            ['37', Widget.Label('󰃝')],
+            ['25', Widget.Label('󰃜')],
+            ['12', Widget.Label('󰃛')],
             ['0', Widget.Label('󰃚')],
         ],
         connections: [[Brightness, stack => {
-          const show = [101, 85, 68, 51, 34, 1, 0].find(
-            threshold => threshold <= Math.floor(Brightness.screen) * 100);
+          const show = [75, 62, 50, 37, 25, 12, 0].find(
+            threshold => threshold <= Brightness.screen * 100);
 
             stack.shown = `${show}`;
         }]],
@@ -28,8 +26,8 @@ const BrightnessIcon = () => Box({
 
 
 const PercentBar = () => Widget.Overlay({
-    child: Slider({
-        className: 'volPopupBar',
+    child: Widget.Slider({
+        className: 'brtPopupBar',
         vertical: true,
         inverted: true,
         drawValue: false,
@@ -40,40 +38,30 @@ const PercentBar = () => Widget.Overlay({
         }]],
     }),
     overlays: [
-        Box({
+        Widget.Box({
             vpack: 'end',
             child: BrightnessIcon(),
         }),
     ]
 });
 
-const togglePopup = (() => {
-    let count = 0;
+export const BrightnessPopup = () => Widget.Box({
+    css: `min-height: 1px;
+          min-width: 1px;`,
+    child: Widget.Revealer({
+        className: 'brightnessPopup',
+        transition: 'slide_up',
+        child: PercentBar(),
+        properties: [['count', 0]],
+        connections: [[Brightness, rev => {
+            rev.revealChild = true;
+            rev._count++;
+            Utils.timeout(1500, () => {
+                rev._count--;
 
-    Brightness.connect('changed', () => {
-        App.openWindow('brightnessPopup');
-        count++;
-        Utils.timeout(1500, () => {
-            count--;
-
-            if (count === 0)
-                App.closeWindow('brightnessPopup');
-        })
+                if (rev._count === 0)
+                    rev.revealChild = false;
+            })
+        }]]
     })
-})();
-
-const percentBar = PercentBar();
-
-export const BrightnessPopup = () => PopupWindow({
-    name: 'brightnessPopup',
-    className: 'volumePopup',
-    anchor: ['bottom', 'right'],
-    layer: 'overlay',
-    margins: [0, 48, 12, 0],
-    transition: 'slide_up',
-    child: Box({
-        children: [
-            percentBar,
-        ]
-    }),
 });

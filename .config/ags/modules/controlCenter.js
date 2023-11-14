@@ -1,6 +1,6 @@
 import { Widget } from '../imports.js';
 const { Box } = Widget;
-import PopupWindow from './misc/popupWindow.js';
+import PopupWindow from '../utils/popupWindow.js';
 
 export const ControlCenter = () => PopupWindow({
     name: 'controlCenter',

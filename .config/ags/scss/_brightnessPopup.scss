@@ -1,31 +1,31 @@
-.volumePopup {
+.brightnessPopup {
     background: transparent;
     padding: 3px 0;
 }
 
-.volPopupIcon {
+.brtPopupIcon {
     font-family: SymbolsNerdFontMono;
-    font-size: 13px;
+    font-size: 12px;
     padding: 6px;
 }
 
-.volPopupBar {
+.brtPopupBar {
     min-height: 100px;
     min-width: 1rem;
     margin: 0.5rem;
 }
 
-.volPopupBar scale {
+.brtPopupBar scale {
     min-width: 1rem;
 }
 
-.volPopupBar trough {
+.brtPopupBar trough {
     background: $bg;
     border-radius: 1rem;
     min-width: 0.5rem;
 }
 
-.volPopupBar highlight {
+.brtPopupBar highlight {
     background: $fg;
     border-radius: 1rem;
     min-height: 1rem;

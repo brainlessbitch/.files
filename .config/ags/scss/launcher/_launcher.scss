@@ -4,6 +4,15 @@
     padding: 6px;
 }
 
+.launcherApp {
+    border-radius: 12px;
+    padding: 3px;
+    margin: 3px;
+    &:focus {
+        background: $bg;
+    }
+}
+
 .launcherEntry {
     caret-color: $fg;
     background: $bg;
@@ -12,15 +21,10 @@
     margin: 6px;
 }
 
-.launcherItem {
-    margin: 3px;
-    &:focus {
-        background: $bg;
-    }
-}
+.launcherItem {}
 
 .launcherItemIcon {
-    margin: 3px;
+    margin: 3px 6px;
 }
 
 .launcherItemTitle {

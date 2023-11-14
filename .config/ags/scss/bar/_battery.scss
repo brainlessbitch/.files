@@ -1,7 +1,7 @@
 .battery {
     background: $bg;
     border-radius: 0 24px 24px 0;
-    padding: 0 8px 1px 3px;
+    padding: 0 6px 1px 3px;
 }
 
 .batIcon {
@@ -10,5 +10,5 @@
 }
 
 .batLabel {
-    font-weight: bold;
+    font-weight: 500;
 }

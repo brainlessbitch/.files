@@ -1,10 +1,19 @@
 import { Widget, App, Applications, Utils } from '../../imports.js';
-import PopupWindow from '../misc/popupWindow.js';
+import PopupWindow from '../../utils/popupWindow.js';
 import Gdk from 'gi://Gdk';
+
+function truncateString(str, maxLength) {
+  if (str.length > maxLength) {
+    return str.slice(0, maxLength) + '...';
+  } else {
+    return str;
+  }
+}
 
 const WINDOW_NAME = 'launcher';
 
 const AppItem = app => Widget.Button({
+    className: 'launcherApp',
     onClicked: () => {
         App.closeWindow(WINDOW_NAME);
         app.launch();
@@ -31,7 +40,7 @@ const AppItem = app => Widget.Button({
                     }),
                     !!app.description && Widget.Label({
                         className: 'launcherItemDescription',
-                        label: app.description || '',
+                        label: truncateString(app.description, 75) || '',
                         wrap: true,
                         xalign: 0,
                         justification: 'left',
@@ -96,7 +105,7 @@ const Launcher = () => {
 export const launcher = PopupWindow({
     name: WINDOW_NAME,
     anchor: ['left'],
-    exclusive: true,
+    exclusive: false,
     transition: 'slide_right',
     popup: true,
     visible: false,

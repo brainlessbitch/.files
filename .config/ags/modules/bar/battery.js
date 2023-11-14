@@ -43,11 +43,7 @@ export const BatteryWidget = () => Box({
     className: 'battery',
     child: EventBox({
         onHover: () => batLabel.revealChild = true,
-        onHoverLost: (widget, event) => {
-        const [_, x, y] = event.get_coords()
-        const w = widget.get_allocation().width;
-        const h = widget.get_allocation().height;
-        if (x < 0 || x > w || y < 0 || y > h) { batLabel.revealChild = false }},
+        onHoverLost: () => batLabel.revealChild = false,
         child: Box({
             children: [
                 BatIcon(),

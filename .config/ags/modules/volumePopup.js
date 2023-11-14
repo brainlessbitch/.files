@@ -1,6 +1,5 @@
 import { Widget, Utils, App, Audio } from '../imports.js';
 const { Box, Stack, Slider, Label } = Widget;
-import PopupWindow from './misc/popupWindow.js';
 
 const VolumeIcon = () => Box({
   className: 'volPopupIcon',
@@ -54,33 +53,24 @@ const PercentBar = () => Widget.Overlay({
     ]
 });
 
-const togglePopup = (() => {
-    let count = 0;
+export const VolumePopup = () => Box({
+    css: `min-height: 1px;
+          min-width: 1px;`,
+    child: Widget.Revealer({
+        className: 'volumePopup',
+        transition: 'slide_up',
+        child: PercentBar(),
+        revealChild: true,
+        properties: [['count', 0]],
+        connections: [[Audio, rev => {
+            rev.revealChild = true;
+            rev._count++;
+            Utils.timeout(1500, () => {
+                rev._count--;
 
-    Audio.connect('speaker-changed', () => {
-        App.openWindow('volumePopup');
-        count++;
-        Utils.timeout(1500, () => {
-            count--;
-
-            if (count === 0)
-                App.closeWindow('volumePopup');
-        })
+                if (rev._count === 0)
+                    rev.revealChild = false;
+            });
+        },'speaker-changed']]
     })
-})();
-
-const percentBar = PercentBar();
-
-export const VolumePopup = () => PopupWindow({
-    name: 'volumePopup',
-    className: 'volumePopup',
-    anchor: ['bottom', 'right'],
-    layer: 'overlay',
-    margins: [0, 12, 12, 0],
-    transition: 'slide_up',
-    child: Box({
-        children: [
-            percentBar,
-        ]
-    }),
 });

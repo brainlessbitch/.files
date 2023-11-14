@@ -1,16 +1,15 @@
 import { Widget, Utils } from '../imports.js';
-const { Box, Label, Window, EventBox } = Widget;
 
 function ItemWithIcon(Icon, ItemLabel, onClick) {
     return Widget.MenuItem({
         className: 'desktopMenuItem',
-        child: Box({
+        child: Widget.Box({
             css: `
                 font-size: 1rem;
                 margin: 0 0.5rem;
             `,
             children: [
-                Label({
+                Widget.Label({
                     css: `
                         font-family: SymbolsNerdFontMono;
                         font-size: 12px;
@@ -18,7 +17,7 @@ function ItemWithIcon(Icon, ItemLabel, onClick) {
                     `,
                     label: Icon,
                 }),
-                Label(ItemLabel),
+                Widget.Label(ItemLabel),
             ],
         }),
         onActivate: () => Utils.exec(onClick),
@@ -37,7 +36,7 @@ const PowerMenu = () => Widget.Menu({
 })
 
 
-const Menu = () => EventBox({
+const Menu = () => Widget.EventBox({
     onSecondaryClick: (_, event) => Widget.Menu({
         className: 'desktopMenu',
         children: [
@@ -63,13 +62,13 @@ const Menu = () => EventBox({
             ),
             Widget.MenuItem({
                 className: 'desktopMenuItem',
-                child: Box({
+                child: Widget.Box({
                     css: `
                         font-size: 1rem;
                         margin: 0 0.5rem;
                     `,
                     children: [
-                        Label({
+                        Widget.Label({
                             css: `
                                 font-family: SymbolsNerdFontMono;
                                 font-size: 12px;
@@ -77,7 +76,7 @@ const Menu = () => EventBox({
                             `,
                             label: '󰐥',
                         }),
-                        Label('Powermenu'),
+                        Widget.Label('Powermenu'),
                     ],
                 }),
                 submenu: PowerMenu(),
@@ -86,7 +85,7 @@ const Menu = () => EventBox({
     }).popup_at_pointer(event),
 });
 
-export const DesktopMenu = ({ monitor } = {}) => Window({
+export const DesktopMenu = ({ monitor } = {}) => Widget.Window({
     name: 'desktop',
     anchor: ["top", "bottom", "left", "right"],
     layer: "bottom",

@@ -28,7 +28,7 @@
 
 .volIcon {
   font-family: SymbolsNerdFontMono;
-  font-size: 12px; }
+  font-size: 13px; }
 
 .volBar {
   min-width: 50px;
@@ -46,14 +46,46 @@
 .battery {
   background: #f2f2f2;
   border-radius: 0 24px 24px 0;
-  padding: 0 8px 1px 3px; }
+  padding: 0 6px 1px 3px; }
 
 .batIcon {
   font-family: SymbolsNerdFontMono;
   font-size: 12px; }
 
 .batLabel {
-  font-weight: bold; }
+  font-weight: 500; }
+
+.bar {
+  color: #999999;
+  background: transparent;
+  font-family: Roboto;
+  font-size: 13px; }
+
+.clockIcon {
+  font-family: SymbolsNerdFontMono;
+  font-size: 12px; }
+
+.dateLabel {
+  background: #f2f2f2;
+  font-weight: 500;
+  border-radius: 24px 3px 3px 24px;
+  padding: 0 6px 0 12px;
+  margin: 0 3px; }
+
+.timeLabel {
+  background: #f2f2f2;
+  font-weight: 500;
+  border-radius: 3px;
+  padding: 0 6px;
+  margin: 0 3px; }
+
+.wifiIcon {
+  background: #f2f2f2;
+  font-family: SymbolsNerdFontMono;
+  font-size: 12px;
+  border-radius: 3px 0 0 3px;
+  padding: 0 0 0 8px;
+  margin: 0 0 0 3px; }
 
 .desktopMenu {
   color: #999999;
@@ -87,6 +119,13 @@ tooltip {
   background: #ffffff;
   padding: 6px; }
 
+.launcherApp {
+  border-radius: 12px;
+  padding: 3px;
+  margin: 3px; }
+  .launcherApp:focus {
+    background: #f2f2f2; }
+
 .launcherEntry {
   caret-color: #999999;
   background: #f2f2f2;
@@ -94,13 +133,8 @@ tooltip {
   padding: 3px 12px;
   margin: 6px; }
 
-.launcherItem {
-  margin: 3px; }
-  .launcherItem:focus {
-    background: #f2f2f2; }
-
 .launcherItemIcon {
-  margin: 3px; }
+  margin: 3px 6px; }
 
 .launcherItemTitle {
   font-size: 16px;
@@ -109,12 +143,42 @@ tooltip {
 .launcherItemDescription {
   font-size: 12px; }
 
+.brightnessPopup {
+  background: transparent;
+  padding: 3px 0; }
+
+.brtPopupIcon {
+  font-family: SymbolsNerdFontMono;
+  font-size: 12px;
+  padding: 6px; }
+
+.brtPopupBar {
+  min-height: 100px;
+  min-width: 1rem;
+  margin: 0.5rem; }
+
+.brtPopupBar scale {
+  min-width: 1rem; }
+
+.brtPopupBar trough {
+  background: #f2f2f2;
+  border-radius: 1rem;
+  min-width: 0.5rem; }
+
+.brtPopupBar highlight {
+  background: #999999;
+  border-radius: 1rem;
+  min-height: 1rem;
+  margin: -0.5rem;
+  padding: 6px; }
+
 .volumePopup {
-  background: transparent; }
+  background: transparent;
+  padding: 3px 0; }
 
 .volPopupIcon {
   font-family: SymbolsNerdFontMono;
-  font-size: 12px;
+  font-size: 13px;
   padding: 6px; }
 
 .volPopupBar {
@@ -136,35 +200,3 @@ tooltip {
   min-height: 1rem;
   margin: -0.5rem;
   padding: 6px; }
-
-.bar {
-  color: #999999;
-  background: transparent;
-  font-family: Roboto;
-  font-size: 13px; }
-
-.clockIcon {
-  font-family: SymbolsNerdFontMono;
-  font-size: 12px; }
-
-.dateLabel {
-  background: #f2f2f2;
-  font-weight: bold;
-  border-radius: 24px 3px 3px 24px;
-  padding: 0 6px 0 12px;
-  margin: 0 3px; }
-
-.timeLabel {
-  background: #f2f2f2;
-  font-weight: bold;
-  border-radius: 3px;
-  padding: 0 6px;
-  margin: 0 3px; }
-
-.wifiIcon {
-  background: #f2f2f2;
-  font-family: SymbolsNerdFontMono;
-  font-size: 12px;
-  border-radius: 3px 0 0 3px;
-  padding: 0 0 0 8px;
-  margin: 0 0 0 3px; }

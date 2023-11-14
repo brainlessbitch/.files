@@ -1,7 +1,6 @@
-import { Widget, Utils, Hyprland, App, Applications } from '../imports.js';
-const { Box } = Widget;
-import DockIcon from './misc/appIcon.js';
-import PopupWindow from './misc/popupWindow.js';
+import { Widget, Utils, Hyprland, Applications, App } from '../imports.js';
+import DockIcon from '../utils/appIcon.js';
+import PopupWindow from '../utils/popupWindow.js';
 
 const pins = ['nemo', 'foot', 'firefox', 'spotify'];
 
@@ -48,7 +47,7 @@ function numOpen(appName) {
                 margin: 0 1px;
             `;
         };
-        return Box({
+        return Widget.Box({
             connections: ['client-added', 'client-removed'].map(signal => [
                 Hyprland, callback, signal
             ]),
@@ -56,7 +55,7 @@ function numOpen(appName) {
     });
 }
 
-const DockPins = () => Box({
+const DockPins = () => Widget.Box({
     className: 'dockIcons',
     children: pins.map(appName => {
         return Widget.Overlay({
@@ -67,7 +66,7 @@ const DockPins = () => Box({
                 tooltipText: appName,
             }),
             overlays: [
-                Box({
+                Widget.Box({
                     vpack: 'end',
                     hpack: 'center',
                     connections: [
@@ -82,7 +81,7 @@ const DockPins = () => Box({
     }),
 });
 
-const DockTasks = () => Box({
+const DockTasks = () => Widget.Box({
     className: 'dockIcons',
     connections: [
         [Hyprland, box => {
@@ -95,7 +94,7 @@ const DockTasks = () => Box({
                         tooltipText: appName,
                     }),
                     overlays: [
-                        Box({
+                        Widget.Box({
                             vpack: 'end',
                             hpack: 'center',
                             children: tasks.filter(i => i === appName).length > 1 ? numOpen(appName) : []
@@ -119,7 +118,7 @@ const toggleDock = () => {
 
 Hyprland.connect('changed', toggleDock);
 
-const Separator = () => Box({
+const Separator = () => Widget.Box({
     css: `
         min-width: 2px;
         min-height: 24px;
@@ -142,7 +141,7 @@ export const Dock = () => PopupWindow({
     layer: 'bottom',
     margins: [0, 0, 6, 0],
     transition: 'slide_up',
-    child: Box({
+    child: Widget.Box({
         children: [
             DockPins(),
             Separator(),
