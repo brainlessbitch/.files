@@ -1,43 +1,25 @@
 // Components
-@import './workspaces';
-@import './volume';
-@import './battery';
+@import 'icon';
+@import 'workspaces';
+@import 'tray';
+@import 'battery';
+@import 'clock';
 
 .bar {
-    color: $fg;
-    background: transparent;
-    font-family: Roboto;
-    font-size: 13px;
+    color: $onSurface;
+    background: $surface;
+    font-family: $font;
+    border-radius: 12px;
 }
 
-.clock {}
-
-.clockIcon {
-    font-family: SymbolsNerdFontMono;
-    font-size: 12px;
-}
-
-.dateLabel {
-    background: $bg;
-    font-weight: 500;
-    border-radius: 24px 3px 3px 24px;
-    padding: 0 6px 0 12px;
-    margin: 0 3px;
-}
-
-.timeLabel {
-    background: $bg;
-    font-weight: 500;
-    border-radius: 3px;
-    padding: 0 6px;
-    margin: 0 3px;
+.systemInfo {
+    background: $surfaceVariant;
+    font-family: $iconFont;
+    border-radius: 12px;
+    margin: 6px 6px 0 6px;
+    padding: 6px;
 }
 
 .wifiIcon {
-    background: $bg;
-    font-family: SymbolsNerdFontMono;
-    font-size: 12px;
-    border-radius: 3px 0 0 3px;
-    padding: 0 0 0 8px;
-    margin: 0 0 0 3px;
+    margin: 3px;
 }

@@ -1,5 +1,5 @@
 import { App, Widget } from '../imports.js';
-const { Revealer, Box, Window } = Widget;
+const { Box, Revealer, Window } = Widget;
 
 export default ({
     name,
@@ -19,9 +19,9 @@ export default ({
             child: Revealer({
                 transition,
                 transitionDuration: 300,
-                connections: [[App, (rev, currentName, visible) => {
+                connections: [[App, (self, currentName, visible) => {
                     if (currentName === name) {
-                        rev.reveal_child = visible;
+                        self.reveal_child = visible;
                     }
                 }]],
                 child: child,

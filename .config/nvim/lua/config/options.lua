@@ -49,9 +49,9 @@ opt.list = true
 opt.listchars = {
     tab = "▎ ",
     trail = "·",
-    extends = "»",
-    precedes = "«",
-    nbsp = "×"
+    extends = ">",
+    precedes = "<",
+    nbsp = "x"
 }
 opt.modeline = true
 
@@ -109,13 +109,13 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 -- Colorscheme
-cmd.colorscheme("adwaita")
+cmd.colorscheme("fairyfloss")
 
 -- Italicized comments
 cmd.hi("Comment gui='italic'")
 
 -- Set transparency
-local transparent = false
+local transparent = true
 if transparent == true then
     cmd.hi("Normal ctermbg=none guibg=none")
     cmd.hi("NormalNC ctermbg=none guibg=none")

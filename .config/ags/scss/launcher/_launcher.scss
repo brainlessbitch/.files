@@ -1,24 +1,27 @@
 .launcher {
-    color: $fg;
-    background: $bg1;
+    color: $onSurface;
+    background: $surface;
+    font-family: $font;
+    border-radius: 12px;
+    margin: 0 0 12px 0;
     padding: 6px;
 }
 
 .launcherApp {
     border-radius: 12px;
-    padding: 3px;
     margin: 3px;
+    padding: 3px;
     &:focus {
-        background: $bg;
+        background: $surfaceVariant;
     }
 }
 
 .launcherEntry {
-    caret-color: $fg;
-    background: $bg;
+    caret-color: $onSurface;
+    background: $surfaceVariant;
     border-radius: 12px;
-    padding: 3px 12px;
     margin: 6px;
+    padding: 3px 12px;
 }
 
 .launcherItem {}
@@ -35,4 +38,5 @@
 .launcherItemDescription {
     font-size: 12px;
 }
+
 

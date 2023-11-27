@@ -4,21 +4,20 @@
 # /___/__/_||_|_| \__| - My zsh config
 
 # Vars
-export BROWSER='firefox'
-export EDITOR='nvim'
-export TERMINAL='/usr/bin/foot'
+env_file="$HOME/env_variables"
 
-export SDL_VIDEODRIVER='wayland'
-export LITE_SCALE=2
+if [ -f "$env_file" ]; then
+    while IFS= read -r line; do
+        export "$line"
+    done < "$env_file"
+else
+    echo "Err: $env_file not found"
+fi
 
 export HISTORY_IGNORE="(cd|cd -|cd ..|exit|history|ls|pwd|sudo reboot)"
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [ -d "$HOME/.cargo/bin" ] ;
-  then PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # Load Engine
@@ -91,14 +90,10 @@ alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 #alias ll='lsd -la --group-directories-first --icon never'
 
-alias peaclock="peaclock --config-dir ~/.config/peaclock"
-
 # Autostart
 
 #echo -e "\e[1;32m---,--'-{\e[0;31m@"
 
 # Starship
-export STARSHIP_CONFIG=~/pure.toml
+export STARSHIP_CONFIG=~/starship.toml
 eval "$(starship init zsh)"
-
-[ -f "/home/bunbun/.ghcup/env" ] && source "/home/bunbun/.ghcup/env" # ghcup-env

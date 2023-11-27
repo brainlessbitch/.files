@@ -2,28 +2,31 @@ import { Utils, Widget, Service, Hyprland } from '../../imports.js';
 const { execAsync } = Utils;
 const { Box, Button, Label } = Widget;
 
-export const Workspaces = () => Widget.Box({
+export const Workspaces = () => Box({
     className: 'workspaces',
-    child: Widget.Box({
+    vertical: true,
+    child: Box({
+        vertical: true,
         children: Array.from({ length: 10 }, (_, i) => i + 1).map(i => Widget.Button({
+            cursor: 'pointer',
             properties: [['index', i]],
-            onClicked: () => Utils.execAsync([
+            onClicked: () => execAsync([
                 'hyprctl',
                 'dispatch',
                 'workspace',
                 `${i}`,
             ]).catch(console.error),
-            onSecondaryClick: () => Utils.execAsync([
+            onSecondaryClick: () => execAsync([
                 'hyprctl',
                 'dispatch',
                 'movetoworkspacesilent',
                 `${i}`,
             ]).catch(console.error),
         })),
-        connections: [[Hyprland, box => box.children.forEach(btn => {
+        connections: [[Hyprland, self => self.children.forEach(btn => {
             btn.className = btn._index === Hyprland.active.workspace.id ? 'focused' : '';
-            //btn.style = `min-width: ${5/Hyprland.workspaces.length}rem`;
             btn.visible = Hyprland.workspaces.some(ws => ws.id === btn._index);
+            btn.label = btn._index === Hyprland.active.workspace.id ? '󰣐' : '󱢠';
         })]],
     }),
 });

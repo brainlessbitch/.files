@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+grim - | tee >(wl-copy) > $HOME/Pictures/grim/"$(date +%Y%m%d-%H%M%S)".png

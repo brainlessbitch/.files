@@ -1,9 +1,6 @@
 return {
     {
-        dir = "~/chi-tsuki.nvim"
-    },
-    {
-        "phha/zenburn.nvim"
+        "tssm/fairyfloss.vim"
     },
     {
         "Mofiqul/adwaita.nvim",

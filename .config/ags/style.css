@@ -1,137 +1,91 @@
-*:not(tooltip):not(menubar):not(menu):not(menuitem) {
+*:not(tooltip) {
   all: unset; }
 
+.icon {
+  background: #716799;
+  font-family: SymbolsNerdFontMono;
+  border-radius: 12px;
+  margin: 6px;
+  padding: 6px;
+  min-height: 1.5rem;
+  transition: all 0.2s cubic-bezier(0.3, 0, 1, 1); }
+  .icon:hover {
+    background: #7f76a3; }
+
 .workspaces {
-  background: #f2f2f2;
-  border-radius: 24px;
-  min-width: 8px;
+  background: #716799;
+  border-radius: 12px;
+  margin: 6px;
   padding: 6px; }
   .workspaces button {
-    background: #f2f2f2;
-    border: 2px solid gainsboro;
-    border-radius: 24px;
-    min-height: 6px;
-    min-width: 6px;
-    margin: 0 2px;
-    transition: all 0.2s cubic-bezier(0, 0, 1, 1), border 0.25s cubic-bezier(0, 0, 1, 1); }
+    font-family: SymbolsNerdFontMono;
+    margin: 3px;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1); }
     .workspaces button:hover {
-      background: #c6c6c6;
-      border: 2px solid #c6c6c6; }
+      color: #c5a3ff; }
     .workspaces button.focused {
-      background: #999999;
-      border: 2px solid #999999;
-      min-width: 18px; }
+      color: #c5a3ff; }
 
-.volume {
-  background: #f2f2f2;
-  padding: 0 0 0 6px; }
+.tray {
+  margin: 0; }
 
-.volIcon {
-  font-family: SymbolsNerdFontMono;
-  font-size: 13px; }
+.trayChevron {
+  font-family: SymbolsNerdFontMono; }
 
-.volBar {
-  min-width: 50px;
-  padding: 0 0 0 3px; }
+.trayIcons {
+  margin: 3px 0 0 0; }
 
-.volBar trough highlight {
-  background: #999999;
-  min-height: 0.25rem; }
-
-.volBar trough {
-  background: none;
-  border: 2px solid #999999;
-  border-radius: 1rem; }
+.trayIcon {
+  margin: 0 0 3px 0; }
 
 .battery {
-  background: #f2f2f2;
-  border-radius: 0 24px 24px 0;
-  padding: 0 6px 1px 3px; }
+  margin: 3px; }
 
-.batIcon {
-  font-family: SymbolsNerdFontMono;
-  font-size: 12px; }
-
-.batLabel {
-  font-weight: 500; }
-
-.bar {
-  color: #999999;
-  background: transparent;
-  font-family: Roboto;
-  font-size: 13px; }
-
-.clockIcon {
-  font-family: SymbolsNerdFontMono;
-  font-size: 12px; }
-
-.dateLabel {
-  background: #f2f2f2;
+.clock {
+  background: #716799;
+  font-family: RobotoMono;
   font-weight: 500;
-  border-radius: 24px 3px 3px 24px;
-  padding: 0 6px 0 12px;
-  margin: 0 3px; }
-
-.timeLabel {
-  background: #f2f2f2;
-  font-weight: 500;
-  border-radius: 3px;
-  padding: 0 6px;
-  margin: 0 3px; }
-
-.wifiIcon {
-  background: #f2f2f2;
-  font-family: SymbolsNerdFontMono;
-  font-size: 12px;
-  border-radius: 3px 0 0 3px;
-  padding: 0 0 0 8px;
-  margin: 0 0 0 3px; }
-
-.desktopMenu {
-  color: #999999;
-  background: #ffffff;
-  border: 2px solid #ffffff;
   border-radius: 12px;
+  margin: 6px;
   padding: 6px; }
 
-.desktopMenuItem {
-  color: #999999;
-  border-radius: 12px;
-  padding: 3px 6px; }
-  .desktopMenuItem:hover {
-    background: #f2f2f2; }
-
-.dock {
-  background: #f2f2f2;
+.bar {
+  color: #f8f8f0;
+  background: #5a5475;
+  font-family: Roboto;
   border-radius: 12px; }
 
-.dockIcon {
-  margin: 3px 1px; }
+.systemInfo {
+  background: #716799;
+  font-family: SymbolsNerdFontMono;
+  border-radius: 12px;
+  margin: 6px 6px 0 6px;
+  padding: 6px; }
 
-.dockIcons {
-  margin: 6px; }
-
-tooltip {
-  color: #f2f2f2; }
+.wifiIcon {
+  margin: 3px; }
 
 .launcher {
-  color: #999999;
-  background: #ffffff;
+  color: #f8f8f0;
+  background: #5a5475;
+  font-family: Roboto;
+  border-radius: 12px;
+  margin: 0 0 12px 0;
   padding: 6px; }
 
 .launcherApp {
   border-radius: 12px;
-  padding: 3px;
-  margin: 3px; }
+  margin: 3px;
+  padding: 3px; }
   .launcherApp:focus {
-    background: #f2f2f2; }
+    background: #716799; }
 
 .launcherEntry {
-  caret-color: #999999;
-  background: #f2f2f2;
+  caret-color: #f8f8f0;
+  background: #716799;
   border-radius: 12px;
-  padding: 3px 12px;
-  margin: 6px; }
+  margin: 6px;
+  padding: 3px 12px; }
 
 .launcherItemIcon {
   margin: 3px 6px; }
@@ -143,60 +97,165 @@ tooltip {
 .launcherItemDescription {
   font-size: 12px; }
 
+.desktopMenu {
+  color: #f8f8f0;
+  background: #5a5475;
+  font-family: Roboto;
+  border-radius: 12px;
+  padding: 6px 3px; }
+
+.desktopMenuItem {
+  border-radius: 12px;
+  margin: 0 3px;
+  padding: 6px 12px; }
+  .desktopMenuItem:hover {
+    background: #716799; }
+
+.desktopMenuItemIcon {
+  font-family: SymbolsNerdFontMono;
+  padding: 0 6px 0 0; }
+
+.separator {
+  background: #716799; }
+
+.desktopIcons {
+  margin: 24px 0 0 24px; }
+
+.desktopIcon {
+  border-radius: 6px;
+  padding: 6px;
+  transition: all 200ms cubic-bezier(0, 0, 1, 1); }
+  .desktopIcon:hover {
+    background: rgba(197, 163, 255, 0.5); }
+
+.desktopIconLabel {
+  color: #5a5475;
+  font-family: 'SourceHanSansJP'; }
+
 .brightnessPopup {
-  background: transparent;
-  padding: 3px 0; }
+  color: #f8f8f0;
+  background: #5a5475;
+  font-family: Roboto;
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 6px; }
 
 .brtPopupIcon {
   font-family: SymbolsNerdFontMono;
-  font-size: 12px;
-  padding: 6px; }
+  margin: 0 6px; }
+
+.brtPopupLabel {
+  font-weight: 400;
+  margin: 3px; }
 
 .brtPopupBar {
-  min-height: 100px;
-  min-width: 1rem;
-  margin: 0.5rem; }
-
-.brtPopupBar scale {
-  min-width: 1rem; }
-
-.brtPopupBar trough {
-  background: #f2f2f2;
-  border-radius: 1rem;
-  min-width: 0.5rem; }
-
-.brtPopupBar highlight {
-  background: #999999;
-  border-radius: 1rem;
-  min-height: 1rem;
-  margin: -0.5rem;
-  padding: 6px; }
+  min-width: 120px; }
+  .brtPopupBar scale {
+    min-height: 12px; }
+  .brtPopupBar trough {
+    background: #716799;
+    border-radius: 12px;
+    min-height: 12px; }
+  .brtPopupBar highlight {
+    background: #c5a3ff;
+    border-radius: 12px;
+    min-width: 12px; }
 
 .volumePopup {
-  background: transparent;
-  padding: 3px 0; }
+  color: #f8f8f0;
+  background: #5a5475;
+  font-family: Roboto;
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 6px; }
 
 .volPopupIcon {
   font-family: SymbolsNerdFontMono;
-  font-size: 13px;
-  padding: 6px; }
+  margin: 0 6px; }
+
+.volPopupLabel {
+  font-weight: 400;
+  margin: 3px; }
 
 .volPopupBar {
-  min-height: 100px;
-  min-width: 1rem;
-  margin: 0.5rem; }
+  min-width: 120px; }
+  .volPopupBar scale {
+    min-height: 12px; }
+  .volPopupBar trough {
+    background: #716799;
+    border-radius: 12px;
+    min-height: 12px; }
+  .volPopupBar highlight {
+    background: #c5a3ff;
+    border-radius: 12px;
+    min-width: 12px; }
 
-.volPopupBar scale {
-  min-width: 1rem; }
+.uwustagramControls {
+  margin: 0 24px 48px; }
 
-.volPopupBar trough {
-  background: #f2f2f2;
-  border-radius: 1rem;
-  min-width: 0.5rem; }
+.controlsPrev {
+  font-family: SymbolsNerdFontMono;
+  font-size: 1.5rem; }
 
-.volPopupBar highlight {
-  background: #999999;
-  border-radius: 1rem;
-  min-height: 1rem;
-  margin: -0.5rem;
-  padding: 6px; }
+.controlsPlayPause {
+  font-family: SymbolsNerdFontMono;
+  font-size: 2.5rem;
+  margin: 0 24px; }
+
+.controlsNext {
+  font-family: SymbolsNerdFontMono;
+  font-size: 1.5rem; }
+
+.music {
+  background: #5a5475;
+  font-family: Roboto;
+  border-radius: 0; }
+
+.uwustagramHeader {
+  background: #716799;
+  font-weight: bold;
+  padding: 12px; }
+
+.uwustagramArtist {
+  font-weight: 500;
+  padding: 12px; }
+
+.artistIcon {
+  font-family: SymbolsNerdFontMono;
+  font-size: 1.5em;
+  margin: 0 6px 0 0; }
+
+.uwustagramCover {
+  opacity: 0.25;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  min-height: 240px;
+  min-width: 240px; }
+
+.uwustagramCoverOverlay {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  margin: 48px;
+  box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.5); }
+
+.uwustagramButtons {
+  font-family: SymbolsNerdFontMono;
+  font-size: 1rem;
+  padding: 12px; }
+
+.uwustagramTitle {
+  font-weight: 500;
+  padding: 12px 24px 0 24px; }
+
+.uwustagramProgress {
+  padding: 24px;
+  min-width: 60px; }
+  .uwustagramProgress trough {
+    background: #716799;
+    border-radius: 12px;
+    min-height: 6px; }
+  .uwustagramProgress progress {
+    background: #c5a3ff;
+    border-radius: 12px;
+    min-width: 6px; }

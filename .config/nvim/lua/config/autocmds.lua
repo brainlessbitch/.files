@@ -26,6 +26,11 @@ autocmd("BufEnter", {
 })
 
 autocmd("Filetype", {
+    pattern = {"yml", "yaml", "toml"},
+    command = "set shiftwidth=2"
+})
+
+autocmd("Filetype", {
   pattern = "tex",
   command = "set textwidth=50 colorcolumn=50"
 })

@@ -1,26 +1,20 @@
 .workspaces {
-    background: $bg;
-    border-radius: 24px;
-    min-width: 8px;
+    background: $surfaceVariant;
+    border-radius: 12px;
+    margin: 6px;
     padding: 6px;
     button {
-        background: $bg;
-        border: 2px solid mix($bg, $fg, 75%);
-        border-radius: 24px;
-        min-height: 6px;
-        min-width: 6px;
-        margin: 0 2px;
+        font-family: $iconFont;
+        margin: 3px;
         transition:
-            all 0.2s cubic-bezier(0, 0, 1, 1),
-            border 0.25s cubic-bezier(0, 0, 1, 1);
+            all 0.3s $materialStandard,
+            border 0.35s $materialStandard;
         &:hover {
-            background: mix($bg, $fg, 50%);
-            border: 2px solid mix($bg, $fg, 50%);
+            color: $primary;
         }
         &.focused {
-            background: $fg;
-            border: 2px solid $fg;
-            min-width: 18px;
+            color: $primary;
         }
     }
 }
+
