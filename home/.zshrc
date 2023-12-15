@@ -75,7 +75,7 @@ function xterm_title_preexec () {
 	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
-if [[ "$TERM" == (kitty*|alacritty*|urxvt*|screen*|tmux*|xterm*) ]]; then
+if [[ "$TERM" == (alacritty*|foot*|screen*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
@@ -90,10 +90,37 @@ alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 #alias ll='lsd -la --group-directories-first --icon never'
 
+alias agsReload="/home/bunbun/.config/ags/scripts/reload"
+
 # Autostart
+
+function staggerText() {
+    stty -echo
+
+    for ((i = 0; i < ${#1}; i++)); do
+        if [[ "${1:$i:1}" == $'\n' ]]; then
+            echo
+        else
+            echo -n "${1:$i:1}"
+        fi
+        sleep 0.025
+    done
+    echo
+
+    stty echo
+}
+
+if [[ $(ps -e | grep -c "zsh") -eq 2 ]]; then
+    staggerText $'+[-->-[>>+>-----<<]<--<---]>-.>>>+.>>..+++[.>]<<<<.+++.------.<<-.>>>>+.'
+fi
 
 #echo -e "\e[1;32m---,--'-{\e[0;31m@"
 
 # Starship
-export STARSHIP_CONFIG=~/starship.toml
+if [[ $VTE == true ]]; then 
+    export STARSHIP_CONFIG=~/pure.toml
+else
+    export STARSHIP_CONFIG=~/starship.toml
+fi
+
 eval "$(starship init zsh)"
