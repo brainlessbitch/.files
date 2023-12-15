@@ -2,29 +2,36 @@
   all: unset; }
 
 .icon {
-  background: #716799;
+  color: #c6c5d0;
+  background: rgba(69, 70, 79, 0.75);
   font-family: SymbolsNerdFontMono;
-  border-radius: 12px;
+  border-radius: 24px;
   margin: 6px;
   padding: 6px;
-  min-height: 1.5rem;
   transition: all 0.2s cubic-bezier(0.3, 0, 1, 1); }
   .icon:hover {
-    background: #7f76a3; }
+    color: #b8c3ff;
+    background: #45464f; }
 
 .workspaces {
-  background: #716799;
-  border-radius: 12px;
+  background: rgba(69, 70, 79, 0.55);
+  border-radius: 24px;
   margin: 6px;
-  padding: 6px; }
+  padding: 3px; }
   .workspaces button {
-    font-family: SymbolsNerdFontMono;
+    background: rgba(198, 197, 208, 0.55);
+    border-radius: 24px;
     margin: 3px;
+    min-height: 1rem;
+    min-width: 1rem;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1); }
     .workspaces button:hover {
-      color: #c5a3ff; }
+      background: linear-gradient(to right, rgba(184, 195, 255, 0.55), rgba(229, 186, 216, 0.55));
+      min-width: 1.5rem; }
     .workspaces button.focused {
-      color: #c5a3ff; }
+      background: linear-gradient(to right, #b8c3ff, #e5bad8);
+      box-shadow: 0 0 4px #b8c3ff;
+      min-width: 2rem; }
 
 .tray {
   margin: 0; }
@@ -33,62 +40,78 @@
   font-family: SymbolsNerdFontMono; }
 
 .trayIcons {
-  margin: 3px 0 0 0; }
+  margin: 0; }
 
 .trayIcon {
-  margin: 0 0 3px 0; }
+  margin: 0; }
 
 .battery {
-  margin: 3px; }
+  margin: 0 3px; }
 
 .clock {
-  background: #716799;
-  font-family: RobotoMono;
+  color: #c6c5d0;
+  font-family: Roboto;
   font-weight: 500;
-  border-radius: 12px;
-  margin: 6px;
-  padding: 6px; }
+  margin: 6px 0; }
+
+.dateLabel {
+  background: rgba(69, 70, 79, 0.55);
+  border-radius: 3px;
+  margin: 0 6px 0 0;
+  padding: 3px 12px; }
+
+.timeLabel {
+  background: rgba(69, 70, 79, 0.55);
+  border-radius: 6px 24px 24px 6px;
+  margin: 0 6px 0 0;
+  padding: 3px 12px; }
 
 .bar {
-  color: #f8f8f0;
-  background: #5a5475;
+  color: #e4e1e6;
+  background: rgba(27, 27, 31, 0.1);
   font-family: Roboto;
-  border-radius: 12px; }
+  border: solid #90909a;
+  border-width: 1px 0;
+  border-radius: 24px; }
 
 .systemInfo {
-  background: #716799;
+  color: #c6c5d0;
+  background: rgba(69, 70, 79, 0.55);
   font-family: SymbolsNerdFontMono;
-  border-radius: 12px;
-  margin: 6px 6px 0 6px;
-  padding: 6px; }
-
-.wifiIcon {
-  margin: 3px; }
-
-.launcher {
-  color: #f8f8f0;
-  background: #5a5475;
-  font-family: Roboto;
-  border-radius: 12px;
-  margin: 0 0 12px 0;
-  padding: 6px; }
-
-.launcherApp {
-  border-radius: 12px;
-  margin: 3px;
-  padding: 3px; }
-  .launcherApp:focus {
-    background: #716799; }
-
-.launcherEntry {
-  caret-color: #f8f8f0;
-  background: #716799;
-  border-radius: 12px;
+  border-radius: 24px 6px 6px 24px;
   margin: 6px;
   padding: 3px 12px; }
 
+.wifiIcon {
+  margin: 0 3px; }
+
+.launcher {
+  color: #e4e1e6;
+  background: rgba(27, 27, 31, 0.1);
+  font-family: Roboto;
+  border: solid #90909a;
+  border-width: 1px 0;
+  border-radius: 24px;
+  padding: 12px; }
+
+.launcherApp {
+  border-radius: 24px;
+  margin: 6px;
+  padding: 6px 12px; }
+  .launcherApp:focus {
+    color: #c6c5d0;
+    background: rgba(69, 70, 79, 0.55); }
+
+.launcherEntry {
+  color: #c6c5d0;
+  caret-color: #c6c5d0;
+  background: rgba(69, 70, 79, 0.55);
+  border-radius: 24px;
+  margin: 6px;
+  padding: 6px 12px; }
+
 .launcherItemIcon {
-  margin: 3px 6px; }
+  margin: 0 6px 0 0; }
 
 .launcherItemTitle {
   font-size: 16px;
@@ -98,96 +121,101 @@
   font-size: 12px; }
 
 .desktopMenu {
-  color: #f8f8f0;
-  background: #5a5475;
+  color: #e4e1e6;
+  background: rgba(27, 27, 31, 0.1);
   font-family: Roboto;
-  border-radius: 12px;
-  padding: 6px 3px; }
+  border: solid #90909a;
+  border-width: 1px 0;
+  border-radius: 24px;
+  padding: 6px; }
 
 .desktopMenuItem {
-  border-radius: 12px;
+  border-radius: 24px;
   margin: 0 3px;
-  padding: 6px 12px; }
+  padding: 6px 12px;
+  transition: all 200ms cubic-bezier(0, 0, 1, 1); }
   .desktopMenuItem:hover {
-    background: #716799; }
+    color: #c6c5d0;
+    background: rgba(69, 70, 79, 0.55); }
 
 .desktopMenuItemIcon {
   font-family: SymbolsNerdFontMono;
   padding: 0 6px 0 0; }
 
+.desktopMenuItemSubmenuArrow {
+  color: rgba(228, 225, 230, 0.55);
+  font-family: Roboto;
+  padding: 0 0 0 6px; }
+
 .separator {
-  background: #716799; }
+  background: #45464f; }
 
 .desktopIcons {
   margin: 24px 0 0 24px; }
 
 .desktopIcon {
-  border-radius: 6px;
+  border-radius: 12px;
   padding: 6px;
   transition: all 200ms cubic-bezier(0, 0, 1, 1); }
   .desktopIcon:hover {
-    background: rgba(197, 163, 255, 0.5); }
+    background: rgba(184, 195, 255, 0.5); }
 
 .desktopIconLabel {
-  color: #5a5475;
+  color: #e4e1e6;
   font-family: 'SourceHanSansJP'; }
 
 .brightnessPopup {
-  color: #f8f8f0;
-  background: #5a5475;
-  font-family: Roboto;
-  border-radius: 12px;
-  margin: 3px 0;
-  padding: 6px; }
+  color: #e4e1e6;
+  background: rgba(27, 27, 31, 0.1);
+  border: solid #90909a;
+  border-width: 1px 0;
+  border-radius: 24px;
+  margin: 6px;
+  padding: 12px; }
 
 .brtPopupIcon {
   font-family: SymbolsNerdFontMono;
-  margin: 0 6px; }
-
-.brtPopupLabel {
-  font-weight: 400;
-  margin: 3px; }
+  margin: 0 6px 0 0; }
 
 .brtPopupBar {
   min-width: 120px; }
   .brtPopupBar scale {
     min-height: 12px; }
   .brtPopupBar trough {
-    background: #716799;
-    border-radius: 12px;
+    background: rgba(69, 70, 79, 0.55);
+    border-radius: 24px;
     min-height: 12px; }
   .brtPopupBar highlight {
-    background: #c5a3ff;
-    border-radius: 12px;
+    background: linear-gradient(to right, #b8c3ff, #e5bad8);
+    border-radius: 24px;
+    box-shadow: 0 0 4px #b8c3ff;
     min-width: 12px; }
 
 .volumePopup {
-  color: #f8f8f0;
-  background: #5a5475;
-  font-family: Roboto;
-  border-radius: 12px;
-  margin: 3px 0;
-  padding: 6px; }
+  color: #e4e1e6;
+  background: rgba(27, 27, 31, 0.1);
+  border: solid #90909a;
+  border-width: 1px 0;
+  border-radius: 24px;
+  margin: 6px;
+  padding: 12px; }
 
 .volPopupIcon {
   font-family: SymbolsNerdFontMono;
-  margin: 0 6px; }
-
-.volPopupLabel {
-  font-weight: 400;
-  margin: 3px; }
+  margin: 0 6px 0 0; }
 
 .volPopupBar {
   min-width: 120px; }
   .volPopupBar scale {
     min-height: 12px; }
   .volPopupBar trough {
-    background: #716799;
-    border-radius: 12px;
+    background: rgba(69, 70, 79, 0.55);
+    border-radius: 24px;
     min-height: 12px; }
   .volPopupBar highlight {
-    background: #c5a3ff;
-    border-radius: 12px;
+    background: linear-gradient(to right, #b8c3ff, #e5bad8);
+    border-radius: 24px;
+    box-shadow: 0 0 4px #b8c3ff;
     min-width: 12px; }
 
 .uwustagramControls {
@@ -207,13 +235,18 @@
   font-size: 1.5rem; }
 
 .music {
-  background: #5a5475;
+  color: #e4e1e6;
+  background: rgba(27, 27, 31, 0.1);
   font-family: Roboto;
-  border-radius: 0; }
+  border: solid #90909a;
+  border-width: 1px 0;
+  border-radius: 12px; }
 
 .uwustagramHeader {
-  background: #716799;
+  color: #c6c5d0;
+  background: rgba(69, 70, 79, 0.55);
   font-weight: bold;
+  border-radius: 12px 12px 0 0;
   padding: 12px; }
 
 .uwustagramArtist {
@@ -252,10 +285,18 @@
   padding: 24px;
   min-width: 60px; }
   .uwustagramProgress trough {
-    background: #716799;
-    border-radius: 12px;
+    background: rgba(69, 70, 79, 0.55);
+    border-radius: 24px;
     min-height: 6px; }
   .uwustagramProgress progress {
-    background: #c5a3ff;
-    border-radius: 12px;
+    background: linear-gradient(to right, #b8c3ff, #e5bad8);
+    border-radius: 24px;
+    box-shadow: 0 0 4px #b8c3ff;
     min-width: 6px; }
+
+.terminal {
+  background: rgba(0, 0, 0, 0.1);
+  border: solid #90909a;
+  border-width: 0 0 1px 0;
+  border-radius: 0 0 24px 24px;
+  padding: 12px; }

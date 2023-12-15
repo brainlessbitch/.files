@@ -1,33 +1,36 @@
 .launcher {
     color: $onSurface;
-    background: $surface;
+    background: transparentize($surface, 0.9);
     font-family: $font;
-    border-radius: 12px;
-    margin: 0 0 12px 0;
-    padding: 6px;
+    border: solid $outline;
+    border-width: 1px 0;
+    border-radius: 24px;
+    padding: 12px;
 }
 
 .launcherApp {
-    border-radius: 12px;
-    margin: 3px;
-    padding: 3px;
+    border-radius: 24px;
+    margin: 6px;
+    padding: 6px 12px;
     &:focus {
-        background: $surfaceVariant;
+        color: $onSurfaceVariant;
+        background: transparentize($surfaceVariant, 0.45);
     }
 }
 
 .launcherEntry {
-    caret-color: $onSurface;
-    background: $surfaceVariant;
-    border-radius: 12px;
+    color: $onSurfaceVariant;
+    caret-color: $onSurfaceVariant;
+    background: transparentize($surfaceVariant, 0.45);
+    border-radius: 24px;
     margin: 6px;
-    padding: 3px 12px;
+    padding: 6px 12px;
 }
 
 .launcherItem {}
 
 .launcherItemIcon {
-    margin: 3px 6px;
+    margin: 0 6px 0 0;
 }
 
 .launcherItemTitle {

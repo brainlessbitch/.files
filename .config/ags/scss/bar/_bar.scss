@@ -7,19 +7,22 @@
 
 .bar {
     color: $onSurface;
-    background: $surface;
+    background: transparentize($surface, 0.9);
     font-family: $font;
-    border-radius: 12px;
+    border: solid $outline;
+    border-width: 1px 0;
+    border-radius: 24px;
 }
 
 .systemInfo {
-    background: $surfaceVariant;
+    color: $onSurfaceVariant;
+    background: transparentize($surfaceVariant, 0.45);
     font-family: $iconFont;
-    border-radius: 12px;
-    margin: 6px 6px 0 6px;
-    padding: 6px;
+    border-radius: 24px 6px 6px 24px;
+    margin: 6px;
+    padding: 3px 12px;
 }
 
 .wifiIcon {
-    margin: 3px;
+    margin: 0 3px;
 }

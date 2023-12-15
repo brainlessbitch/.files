@@ -10,5 +10,4 @@ run() {
 run "ags"
 run "nm-applet"
 run "blueman-applet"
-run "/usr/lib/xfce4/notifyd/xfce4-notifyd"
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"

@@ -1,23 +1,33 @@
 .desktopMenu {
     color: $onSurface;
-    background: $surface;
+    background: transparentize($surface, 0.9);
     font-family: $font;
-    border-radius: 12px;
-    padding: 6px 3px;
+    border: solid $outline;
+    border-width: 1px 0;
+    border-radius: 24px;
+    padding: 6px;
 }
 
 .desktopMenuItem {
-    border-radius: 12px;
+    border-radius: 24px;
     margin: 0 3px;
     padding: 6px 12px;
+    transition: all 200ms cubic-bezier(0, 0, 1, 1);
     &:hover {
-        background: $surfaceVariant;
+        color: $onSurfaceVariant;
+        background: transparentize($surfaceVariant, 0.45);
     }
 }
 
 .desktopMenuItemIcon {
     font-family: $iconFont;
     padding: 0 6px 0 0;
+}
+
+.desktopMenuItemSubmenuArrow {
+    color: transparentize($onSurface, 0.45);
+    font-family: $font;
+    padding: 0 0 0 6px;
 }
 
 .separator {

@@ -3,7 +3,7 @@
 }
 
 .desktopIcon {
-    border-radius: 6px;
+    border-radius: 12px;
     padding: 6px;
     transition: all 200ms cubic-bezier(0, 0, 1, 1);
     &:hover {
@@ -12,6 +12,6 @@
 }
 
 .desktopIconLabel {
-    color: $surface;
+    color: $onSurface;
     font-family: 'SourceHanSansJP';
 }

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+colorData=$(./materialColors.py)
+
+applyScss() {
+  scssLightmode=$(echo "$colorData" | jq -r '.lightmode' | sed 's/.*/$lightmode: &;/')
+  scssColors=$(echo "$colorData" | jq -r '.colors | to_entries[] | "$\(.key): \(.value);"' | sed 's/"/\$/g' | sed 's/: /: /')
+
+  echo "$scssLightmode 
+$scssColors" > $HOME/.config/ags/scss/_materialColors.scss
+}
+
+applyBorders() {
+  outlineColor=$(echo "$colorData" | jq -r '.colors.outline' | sed 's/#//')
+
+  borderActive="rgb($outlineColor) rgba(${outlineColor}40) rgba(00000040) rgba(00000040) rgba(${outlineColor}40) rgb($outlineColor)"
+  borderInactive="rgba(${outlineColor}40)"
+
+  sed -i "/col.active_border/ s/.*/    col.active_border = $borderActive 45deg/" $HOME/.config/hypr/hyprland.conf
+  sed -i "/col.inactive_border/ s/.*/    col.inactive_border = $borderInactive/" $HOME/.config/hypr/hyprland.conf
+}
+
+applyScss
+applyBorders

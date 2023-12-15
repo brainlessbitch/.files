@@ -1,12 +1,13 @@
 .icon {
-    background: $surfaceVariant;
+    color: $onSurfaceVariant;
+    background: transparentize($surfaceVariant, 0.25);
     font-family: $iconFont;
-    border-radius: 12px;
+    border-radius: 24px;
     margin: 6px;
     padding: 6px;
-    min-height: 1.5rem;
     transition: all 0.2s $materialAccel;
     &:hover {
-        background: lighten($surfaceVariant, 5%)
+        color: $primary;
+        background: $surfaceVariant
     }
 }
