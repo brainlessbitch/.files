@@ -1,4 +1,4 @@
-import { Widget } from "../../imports.js";
+import { Widget, Network } from "../../imports.js";
 const { Window, Box, CenterBox } = Widget;
 
 // Widgets
@@ -7,6 +7,24 @@ import { Workspaces } from "./workspaces.js";
 import { Tray } from "./tray.js";
 import { BatteryWidget } from "./battery.js";
 import { Clock } from "./clock.js";
+
+const NetworkWidget = () =>
+	Widget.Label({
+		className: "wifiIcon",
+		label: "󰤭",
+		connections: [
+			[
+				Network,
+				(self) => {
+					if (Network.wifi.internet === "disconnected") {
+						self.label = "󰤭";
+					} else {
+						self.label = "󰤨";
+					}
+				},
+			],
+		],
+	});
 
 const Left = () =>
 	Box({
@@ -28,13 +46,7 @@ const Right = () =>
 			Tray(),
 			Box({
 				className: "systemInfo",
-				children: [
-					Widget.Label({
-						className: "wifiIcon",
-						label: "󰤨",
-					}),
-					BatteryWidget(),
-				],
+				children: [NetworkWidget(), BatteryWidget()],
 			}),
 			Clock(),
 		],

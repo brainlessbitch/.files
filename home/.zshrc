@@ -90,7 +90,7 @@ alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 #alias ll='lsd -la --group-directories-first --icon never'
 
-alias agsReload="/home/bunbun/.config/ags/scripts/reload"
+alias agsReload="~/.config/ags/scripts/reload"
 
 # Autostart
 

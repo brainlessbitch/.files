@@ -1,7 +1,7 @@
 import { Widget, App } from "../../imports.js";
 import PopupWindow from "../../utils/popupWindow.js";
 const { Window, Box } = Widget;
-const { Gdk, GLib, Pango, Vte } = imports.gi;
+const { Gtk, Gdk, GLib, Pango, Vte } = imports.gi;
 
 function rgbaColor(red, green, blue, alpha = 1.0) {
 	const r = red / 255.0;
@@ -62,6 +62,31 @@ const Emulator = () => {
 				);
 				self.set_font(Pango.FontDescription.from_string("MapleMonoNF 12"));
 			},
+			connections: [
+				[
+					"key-press-event",
+					(self, event) => {
+						if (
+							event.get_state()[1] ===
+								(Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) &&
+							[Gdk.KEY_c, Gdk.KEY_C].includes(event.get_keyval()[1])
+						) {
+							// TODO: Add selection and copy logic
+						} else if (
+							event.get_state()[1] ===
+								(Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) &&
+							[Gdk.KEY_v, Gdk.KEY_V].includes(event.get_keyval()[1])
+						) {
+							let clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
+							clipboard.request_text((clipboard, text) => {
+								if (text !== null) {
+									self.feed_child(text, text.length);
+								}
+							});
+						}
+					},
+				],
+			],
 		}),
 	});
 	const id = emulator.children[0].connect("child-exited", () => {

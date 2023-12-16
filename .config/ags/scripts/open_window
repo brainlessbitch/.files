@@ -2,7 +2,7 @@
 # Script by https://github.com/exoess
 
 if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 <position> <size>"
+    echo "Usage: $0 <position> <size> <window>"
     exit 1
 fi
 
