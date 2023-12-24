@@ -20,9 +20,9 @@ void onNewWindow(void* self, std::any data) {
     auto* const PWINDOW = std::any_cast<CWindow*>(data);
 
     if (!PWINDOW->m_bX11DoesntWantBorders) {
-        CHyprBar* bar = new CHyprBar(PWINDOW);
-        HyprlandAPI::addWindowDecoration(PHANDLE, PWINDOW, static_cast<IHyprWindowDecoration*>(bar));
-        g_pGlobalState->bars.push_back(bar);
+        std::unique_ptr<CHyprBar> bar = std::make_unique<CHyprBar>(PWINDOW);
+        g_pGlobalState->bars.push_back(bar.get());
+        HyprlandAPI::addWindowDecoration(PHANDLE, PWINDOW, std::move(bar));
     }
 }
 
@@ -69,7 +69,14 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_height", SConfigValue{.intValue = 15});
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:col.text", SConfigValue{.intValue = configStringToInt("rgba(ffffffff)")});
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_text_size", SConfigValue{.intValue = 10});
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_title_enabled", SConfigValue{.intValue = 1});
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_text_font", SConfigValue{.strValue = "Sans"});
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_text_align", SConfigValue{.strValue = "center"});
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_part_of_window", SConfigValue{.intValue = 1});
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_precedence_over_border", SConfigValue{.intValue = 0});
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_buttons_alignment", SConfigValue{.strValue = "right"});
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_padding", SConfigValue{.intValue = 7});
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_button_padding", SConfigValue{.intValue = 5});
 
     HyprlandAPI::addConfigKeyword(PHANDLE, "hyprbars-button", [&](const std::string& k, const std::string& v) { onNewButton(k, v); });
     HyprlandAPI::registerCallbackDynamic(PHANDLE, "preConfigReload", [&](void* self, SCallbackInfo& info, std::any data) { onPreConfigReload(); });

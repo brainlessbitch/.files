@@ -3,7 +3,7 @@
 
 .icon {
   color: #c6c5d0;
-  background: rgba(69, 70, 79, 0.75);
+  background: #45464f;
   font-family: SymbolsNerdFontMono;
   border-radius: 24px;
   margin: 6px;
@@ -14,23 +14,22 @@
     background: #45464f; }
 
 .workspaces {
-  background: rgba(69, 70, 79, 0.55);
+  background: #45464f;
   border-radius: 24px;
-  margin: 6px;
+  margin: 6px 0;
   padding: 3px; }
   .workspaces button {
-    background: rgba(198, 197, 208, 0.55);
+    background: rgba(198, 197, 208, 0.25);
     border-radius: 24px;
     margin: 3px;
     min-height: 1rem;
     min-width: 1rem;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1); }
     .workspaces button:hover {
-      background: linear-gradient(to right, rgba(184, 195, 255, 0.55), rgba(229, 186, 216, 0.55));
+      background: rgba(184, 195, 255, 0.5);
       min-width: 1.5rem; }
     .workspaces button.focused {
-      background: linear-gradient(to right, #b8c3ff, #e5bad8);
-      box-shadow: 0 0 4px #b8c3ff;
+      background: #b8c3ff;
       min-width: 2rem; }
 
 .tray {
@@ -46,7 +45,7 @@
   margin: 0 0.025rem; }
 
 .battery {
-  margin: 0 3px; }
+  margin: 0; }
 
 .clock {
   color: #c6c5d0;
@@ -54,45 +53,47 @@
   font-weight: 500;
   margin: 6px 0; }
 
-.dateLabel {
-  background: rgba(69, 70, 79, 0.55);
-  border-radius: 3px;
-  margin: 0 6px 0 0;
+.timeLabel {
+  background: #45464f;
+  border-radius: 24px;
   padding: 3px 12px; }
 
-.timeLabel {
-  background: rgba(69, 70, 79, 0.55);
-  border-radius: 6px 24px 24px 6px;
-  margin: 0 6px 0 0;
-  padding: 3px 12px; }
+.pfp {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin: 6px;
+  padding: 6px;
+  min-height: 1rem;
+  min-width: 1rem; }
 
 .bar {
   color: #e4e1e6;
-  background: rgba(27, 27, 31, 0.1);
-  font-family: Roboto;
-  border: solid #90909a;
-  border-width: 1px 0;
-  border-radius: 24px; }
+  background: #1b1b1f;
+  font-family: Roboto; }
 
 .systemInfo {
   color: #c6c5d0;
-  background: rgba(69, 70, 79, 0.55);
+  background: #45464f;
   font-family: SymbolsNerdFontMono;
-  border-radius: 24px 6px 6px 24px;
+  border-radius: 24px;
   margin: 6px;
   padding: 3px 12px; }
 
 .wifiIcon {
   margin: 0 3px; }
+  .wifiIcon.off {
+    color: rgba(198, 197, 208, 0.25); }
+
+.bluetoothIcon.off {
+  color: rgba(198, 197, 208, 0.5); }
 
 .launcher {
   color: #e4e1e6;
-  background: rgba(27, 27, 31, 0.1);
+  background: #1b1b1f;
   font-family: Roboto;
-  border: solid #90909a;
-  border-width: 1px 0;
   border-radius: 24px;
-  padding: 12px; }
+  padding: 6px; }
 
 .launcherApp {
   border-radius: 24px;
@@ -100,12 +101,12 @@
   padding: 6px 12px; }
   .launcherApp:focus {
     color: #c6c5d0;
-    background: rgba(69, 70, 79, 0.55); }
+    background: #45464f; }
 
 .launcherEntry {
   color: #c6c5d0;
   caret-color: #c6c5d0;
-  background: rgba(69, 70, 79, 0.55);
+  background: #45464f;
   border-radius: 24px;
   margin: 6px;
   padding: 6px 12px; }
@@ -114,11 +115,11 @@
   margin: 0 6px 0 0; }
 
 .launcherItemTitle {
-  font-size: 16px;
-  font-weight: bold; }
+  font-size: 1rem;
+  font-weight: 500; }
 
 .launcherItemDescription {
-  font-size: 12px; }
+  font-size: 1rem; }
 
 .desktopMenu {
   color: #e4e1e6;
@@ -164,11 +165,13 @@
   color: #e4e1e6;
   font-family: 'SourceHanSansJP'; }
 
+.corner {
+  background: #1b1b1f;
+  border-radius: 24px; }
+
 .brightnessPopup {
   color: #e4e1e6;
-  background: rgba(27, 27, 31, 0.1);
-  border: solid #90909a;
-  border-width: 1px 0;
+  background: #1b1b1f;
   border-radius: 24px;
   margin: 6px;
   padding: 12px; }
@@ -182,20 +185,17 @@
   .brtPopupBar scale {
     min-height: 12px; }
   .brtPopupBar trough {
-    background: rgba(69, 70, 79, 0.55);
+    background: rgba(69, 70, 79, 0.5);
     border-radius: 24px;
     min-height: 12px; }
   .brtPopupBar highlight {
-    background: linear-gradient(to right, #b8c3ff, #e5bad8);
+    background: #b8c3ff;
     border-radius: 24px;
-    box-shadow: 0 0 4px #b8c3ff;
     min-width: 12px; }
 
 .volumePopup {
   color: #e4e1e6;
-  background: rgba(27, 27, 31, 0.1);
-  border: solid #90909a;
-  border-width: 1px 0;
+  background: #1b1b1f;
   border-radius: 24px;
   margin: 6px;
   padding: 12px; }
@@ -209,94 +209,107 @@
   .volPopupBar scale {
     min-height: 12px; }
   .volPopupBar trough {
-    background: rgba(69, 70, 79, 0.55);
+    background: rgba(69, 70, 79, 0.5);
     border-radius: 24px;
     min-height: 12px; }
   .volPopupBar highlight {
-    background: linear-gradient(to right, #b8c3ff, #e5bad8);
+    background: #b8c3ff;
     border-radius: 24px;
-    box-shadow: 0 0 4px #b8c3ff;
     min-width: 12px; }
 
-.uwustagramControls {
-  margin: 0 24px 48px; }
+.notification {
+  color: #e4e1e6;
+  background: rgba(27, 27, 31, 0.1);
+  border: solid #90909a;
+  border-width: 1px 0;
+  border-radius: 24px; }
+  .notification > * {
+    margin: 6px;
+    padding: 12px;
+    min-width: 240px; }
+  .notification.critical {
+    background: rgba(255, 180, 169, 0.1);
+    border: solid #680003;
+    border-width: 1px 0;
+    border-radius: 24px; }
+
+.notificationIcon {
+  margin: 12px 12px 12px 0; }
+
+.notificationTitle {
+  font-weight: 500; }
+
+.notificationBody {
+  color: #a59bac; }
+
+.action-button {
+  margin: 0; }
+
+.action-button:first-child {
+  margin: 0; }
+
+.action-button:last-child {
+  margin: 0; }
+
+.action-button:last-child:first-child {
+  margin: 0; }
+
+.controls {
+  color: #c6c5d0;
+  background: #45464f;
+  border-radius: 24px;
+  margin: 12px 6px; }
 
 .controlsPrev {
   font-family: SymbolsNerdFontMono;
-  font-size: 1.5rem; }
+  font-size: 0.75rem;
+  padding: 0 12px; }
+  .controlsPrev:hover {
+    background: #828392;
+    border-radius: 24px; }
 
 .controlsPlayPause {
   font-family: SymbolsNerdFontMono;
-  font-size: 2.5rem;
-  margin: 0 24px; }
+  font-size: 0.75rem;
+  padding: 0 12px; }
+  .controlsPlayPause:hover {
+    background: #828392;
+    border-radius: 24px; }
 
 .controlsNext {
   font-family: SymbolsNerdFontMono;
-  font-size: 1.5rem; }
+  font-size: 0.75rem;
+  padding: 0 12px; }
+  .controlsNext:hover {
+    background: #828392;
+    border-radius: 24px; }
 
 .music {
   color: #e4e1e6;
-  background: rgba(27, 27, 31, 0.1);
+  background: #1b1b1f;
   font-family: Roboto;
-  border: solid #90909a;
-  border-width: 1px 0;
-  border-radius: 12px; }
-
-.uwustagramHeader {
-  color: #c6c5d0;
-  background: rgba(69, 70, 79, 0.55);
-  font-weight: bold;
-  border-radius: 12px 12px 0 0;
-  padding: 12px; }
-
-.uwustagramArtist {
-  font-weight: 500;
-  padding: 12px; }
-
-.artistIcon {
-  font-family: SymbolsNerdFontMono;
-  font-size: 1.5em;
-  margin: 0 6px 0 0; }
-
-.uwustagramCover {
-  opacity: 0.25;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  min-height: 240px;
+  border-radius: 6px;
+  padding: 12px;
   min-width: 240px; }
 
-.uwustagramCoverOverlay {
+.artist {
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 0 6px; }
+
+.cover {
   background-size: 100% auto;
   background-repeat: no-repeat;
   border-radius: 6px;
-  margin: 48px;
-  box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.5); }
-
-.uwustagramButtons {
-  font-family: SymbolsNerdFontMono;
-  font-size: 1rem;
-  padding: 12px; }
-
-.uwustagramTitle {
-  font-weight: 500;
-  padding: 12px 24px 0 24px; }
-
-.uwustagramProgress {
-  padding: 24px;
+  min-height: 60px;
   min-width: 60px; }
-  .uwustagramProgress trough {
-    background: rgba(69, 70, 79, 0.55);
-    border-radius: 24px;
-    min-height: 6px; }
-  .uwustagramProgress progress {
-    background: linear-gradient(to right, #b8c3ff, #e5bad8);
-    border-radius: 24px;
-    box-shadow: 0 0 4px #b8c3ff;
-    min-width: 6px; }
+
+.title {
+  font-weight: 500;
+  padding: 0 6px; }
 
 .terminal {
-  background: rgba(0, 0, 0, 0.1);
-  border: solid #90909a;
-  border-width: 0 0 1px 0;
-  border-radius: 0 0 24px 24px;
+  background: #1b1b1f;
+  border: 2px solid #45464f;
+  border-radius: 24px;
   padding: 12px; }

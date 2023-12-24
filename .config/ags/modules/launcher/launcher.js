@@ -35,7 +35,7 @@ const AppItem = (app) =>
 							vpack: "center",
 							truncate: "end",
 						}),
-						!!app.description &&
+						/*!!app.description &&
 							Widget.Label({
 								className: "launcherItemDescription",
 								label: truncateString(app.description, 75) || "",
@@ -43,7 +43,7 @@ const AppItem = (app) =>
 								xalign: 0,
 								justification: "left",
 								vpack: "center",
-							}),
+							}),*/
 					],
 				}),
 			],
@@ -82,8 +82,8 @@ const Launcher = () => {
 			Widget.Scrollable({
 				hscroll: "never",
 				css: `
-          min-width: 480px;
-          min-height: 480px;
+          min-width: 120px;
+          min-height: 240px;
         `,
 				child: list,
 			}),
@@ -106,11 +106,11 @@ const Launcher = () => {
 
 export const launcher = PopupWindow({
 	name: WINDOW_NAME,
-	anchor: ["bottom", "left"],
+	anchor: ["top", "left"],
 	//exclusivity: 'exclusive',
 	layer: "overlay",
-	margins: [0, 0, 12, 12],
-	transition: "slide_up",
+	margins: [12, 0, 0, 12],
+	transition: "slide_down",
 	popup: true,
 	visible: false,
 	focusable: true,

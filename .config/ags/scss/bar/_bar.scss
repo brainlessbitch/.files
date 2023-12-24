@@ -4,25 +4,32 @@
 @import 'tray';
 @import 'battery';
 @import 'clock';
+@import 'pfp';
 
 .bar {
     color: $onSurface;
-    background: transparentize($surface, 0.9);
+    background: $surface;
     font-family: $font;
-    border: solid $outline;
-    border-width: 1px 0;
-    border-radius: 24px;
 }
 
 .systemInfo {
     color: $onSurfaceVariant;
-    background: transparentize($surfaceVariant, 0.45);
+    background: $surfaceVariant;
     font-family: $iconFont;
-    border-radius: 24px 6px 6px 24px;
+    border-radius: 24px;
     margin: 6px;
     padding: 3px 12px;
 }
 
 .wifiIcon {
     margin: 0 3px;
+    &.off {
+        color: transparentize($onSurfaceVariant, 0.75);
+    }
+}
+
+.bluetoothIcon {
+    &.off {
+        color: transparentize($onSurfaceVariant, 0.50);
+    }
 }

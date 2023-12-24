@@ -1,7 +1,6 @@
 .terminal {
-  background: rgba(0, 0, 0, 0.1);
-  border: solid $outline;
-  border-width: 0 0 1px 0;
-  border-radius: 0 0 24px 24px;
+  background: $surface;
+  border: 2px solid $surfaceVariant;
+  border-radius: 24px;
   padding: 12px;
 }

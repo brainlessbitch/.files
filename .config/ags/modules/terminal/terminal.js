@@ -3,6 +3,29 @@ import PopupWindow from "../../utils/popupWindow.js";
 const { Window, Box } = Widget;
 const { Gtk, Gdk, GLib, Pango, Vte } = imports.gi;
 
+function readHex(filePath, colorVar) {
+	let [, contents] = GLib.file_get_contents(filePath);
+
+	let textDecoder = new TextDecoder("utf-8");
+	let fileContent = textDecoder.decode(contents);
+
+	let regex = new RegExp(`\\$${colorVar}:\\s*#([0-9a-fA-F]{6})`);
+	let match = fileContent.match(regex);
+
+	return match ? match[1] : null;
+}
+
+function hex2rgb(hex) {
+	hex = hex.replace(/^#/, "");
+
+	const bigint = parseInt(hex, 16);
+	const r = (bigint >> 16) & 255;
+	const g = (bigint >> 8) & 255;
+	const b = bigint & 255;
+
+	return [r, g, b];
+}
+
 function rgbaColor(red, green, blue, alpha = 1.0) {
 	const r = red / 255.0;
 	const g = green / 255.0;
@@ -38,8 +61,16 @@ const Emulator = () => {
 					null,
 				);
 				self.set_colors(
-					rgbaColor(255, 255, 255),
-					new Gdk.RGBA({ alpha: 0.1 }),
+					rgbaColor(
+						...hex2rgb(
+							readHex(`${App.configDir}/scss/_colors.scss`, "onSurface"),
+						),
+					),
+					rgbaColor(
+						...hex2rgb(
+							readHex(`${App.configDir}/scss/_colors.scss`, "surface"),
+						),
+					),
 					[
 						rgbaColor(23, 20, 33),
 						rgbaColor(192, 28, 40),
@@ -61,32 +92,29 @@ const Emulator = () => {
 					],
 				);
 				self.set_font(Pango.FontDescription.from_string("MapleMonoNF 12"));
+
+				// Connections
+				self.on("key-press-event", (self, event) => {
+					if (
+						event.get_state()[1] ===
+							(Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) &&
+						[Gdk.KEY_c, Gdk.KEY_C].includes(event.get_keyval()[1])
+					) {
+						// TODO: Add selection and copy logic
+					} else if (
+						event.get_state()[1] ===
+							(Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) &&
+						[Gdk.KEY_v, Gdk.KEY_V].includes(event.get_keyval()[1])
+					) {
+						let clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
+						clipboard.request_text((clipboard, text) => {
+							if (text !== null) {
+								self.feed_child(text, text.length);
+							}
+						});
+					}
+				});
 			},
-			connections: [
-				[
-					"key-press-event",
-					(self, event) => {
-						if (
-							event.get_state()[1] ===
-								(Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) &&
-							[Gdk.KEY_c, Gdk.KEY_C].includes(event.get_keyval()[1])
-						) {
-							// TODO: Add selection and copy logic
-						} else if (
-							event.get_state()[1] ===
-								(Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) &&
-							[Gdk.KEY_v, Gdk.KEY_V].includes(event.get_keyval()[1])
-						) {
-							let clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
-							clipboard.request_text((clipboard, text) => {
-								if (text !== null) {
-									self.feed_child(text, text.length);
-								}
-							});
-						}
-					},
-				],
-			],
 		}),
 	});
 	const id = emulator.children[0].connect("child-exited", () => {
@@ -108,8 +136,8 @@ export const Terminal = ({ monitor } = {}) =>
 		//popup: true,
 		focusable: true,
 		child: Emulator(),
-		connections: [
-			[
+		setup: (self) => {
+			self.hook(
 				App,
 				(self, windowName, visible) => {
 					if (windowName !== "terminal") {
@@ -122,6 +150,6 @@ export const Terminal = ({ monitor } = {}) =>
 					}
 				},
 				"window-toggled",
-			],
-		],
+			);
+		},
 	});

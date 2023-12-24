@@ -3,6 +3,7 @@ import { Widget } from "../../imports.js";
 // Widgets
 import { BrightnessPopup } from "./brightnessPopup.js";
 import { VolumePopup } from "./volumePopup.js";
+//export { NotificationPopups } from "./notifications.js";
 
 export const Popups = () =>
 	Widget.Window({

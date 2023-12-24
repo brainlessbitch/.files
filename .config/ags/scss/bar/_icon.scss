@@ -1,6 +1,6 @@
 .icon {
     color: $onSurfaceVariant;
-    background: transparentize($surfaceVariant, 0.25);
+    background: $surfaceVariant;
     font-family: $iconFont;
     border-radius: 24px;
     margin: 6px;
@@ -8,6 +8,6 @@
     transition: all 0.2s $materialAccel;
     &:hover {
         color: $primary;
-        background: $surfaceVariant
+        background: $surfaceVariant;
     }
 }

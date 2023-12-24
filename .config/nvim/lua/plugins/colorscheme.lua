@@ -1,6 +1,9 @@
 return {
   {
     "Mofiqul/adwaita.nvim",
+    init = function()
+      vim.g.adwaita_transparent = false
+    end
   },
   {
     "franbach/miramare",

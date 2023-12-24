@@ -4,8 +4,8 @@ const { Box, Slider, Label } = Widget;
 const VolumeIcon = () =>
 	Label({
 		className: "volPopupIcon",
-		connections: [
-			[
+		setup: (self) => {
+			self.hook(
 				Audio,
 				(self) => {
 					if (!Audio.speaker) return;
@@ -20,8 +20,8 @@ const VolumeIcon = () =>
 						].toString();
 				},
 				"speaker-changed",
-			],
-		],
+			);
+		},
 	});
 
 const PercentBar = () =>
@@ -29,8 +29,8 @@ const PercentBar = () =>
 		className: "volPopupBar",
 		drawValue: false,
 		onChange: ({ value }) => (Audio.speaker.volume = value),
-		connections: [
-			[
+		setup: (self) => {
+			self.hook(
 				Audio,
 				(self) => {
 					if (!Audio.speaker) return;
@@ -38,8 +38,8 @@ const PercentBar = () =>
 					self.value = Audio.speaker.volume;
 				},
 				"speaker-changed",
-			],
-		],
+			);
+		},
 	});
 
 export const VolumePopup = () =>
@@ -52,21 +52,21 @@ export const VolumePopup = () =>
 				className: "volumePopup",
 				children: [VolumeIcon(), PercentBar()],
 			}),
-			properties: [["count", 0]],
-			connections: [
-				[
+			attribute: { count: 0 },
+			setup: (self) => {
+				self.hook(
 					Audio,
 					(self) => {
 						self.revealChild = true;
-						self._count++;
+						self.attribute.count++;
 						Utils.timeout(1500, () => {
-							self._count--;
+							self.attribute.count--;
 
-							if (self._count === 0) self.revealChild = false;
+							if (self.attribute.count === 0) self.revealChild = false;
 						});
 					},
 					"speaker-changed",
-				],
-			],
+				);
+			},
 		}),
 	});

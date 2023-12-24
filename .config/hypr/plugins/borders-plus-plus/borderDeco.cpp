@@ -14,12 +14,46 @@ CBordersPlusPlus::~CBordersPlusPlus() {
     damageEntire();
 }
 
-SWindowDecorationExtents CBordersPlusPlus::getWindowDecorationExtents() {
-    return m_seExtents;
+SDecorationPositioningInfo CBordersPlusPlus::getPositioningInfo() {
+    static auto* const           PBORDERS = &HyprlandAPI::getConfigValue(PHANDLE, "plugin:borders-plus-plus:add_borders")->intValue;
+
+    static std::vector<int64_t*> PSIZES;
+    for (size_t i = 0; i < 9; ++i) {
+        PSIZES.push_back(&HyprlandAPI::getConfigValue(PHANDLE, "plugin:borders-plus-plus:border_size_" + std::to_string(i + 1))->intValue);
+    }
+
+    SDecorationPositioningInfo info;
+    info.policy   = DECORATION_POSITION_ABSOLUTE;
+    info.reserved = true;
+    info.priority = 9990;
+    info.edges    = DECORATION_EDGE_BOTTOM | DECORATION_EDGE_LEFT | DECORATION_EDGE_RIGHT | DECORATION_EDGE_TOP;
+
+    if (m_fLastThickness == 0) {
+        double size = 0;
+
+        for (size_t i = 0; i < *PBORDERS; ++i) {
+            size += *PSIZES[i];
+        }
+
+        info.desiredExtents = {{size, size}, {size, size}};
+        m_fLastThickness    = size;
+    } else {
+        info.desiredExtents = {{m_fLastThickness, m_fLastThickness}, {m_fLastThickness, m_fLastThickness}};
+    }
+
+    return info;
 }
 
-SWindowDecorationExtents CBordersPlusPlus::getWindowDecorationReservedArea() {
-    return m_seExtents;
+void CBordersPlusPlus::onPositioningReply(const SDecorationPositioningReply& reply) {
+    ; // ignored
+}
+
+uint64_t CBordersPlusPlus::getDecorationFlags() {
+    return 0;
+}
+
+eDecorationLayer CBordersPlusPlus::getDecorationLayer() {
+    return DECORATION_LAYER_OVER;
 }
 
 void CBordersPlusPlus::draw(CMonitor* pMonitor, float a, const Vector2D& offset) {
@@ -43,11 +77,14 @@ void CBordersPlusPlus::draw(CMonitor* pMonitor, float a, const Vector2D& offset)
     if (*PBORDERS < 1)
         return;
 
+    const auto PWORKSPACE      = g_pCompositor->getWorkspaceByID(m_pWindow->m_iWorkspaceID);
+    const auto WORKSPACEOFFSET = PWORKSPACE && !m_pWindow->m_bPinned ? PWORKSPACE->m_vRenderOffset.vec() : Vector2D();
+
     auto       rounding      = m_pWindow->rounding() == 0 ? 0 : m_pWindow->rounding() * pMonitor->scale + *PBORDERSIZE;
     const auto ORIGINALROUND = rounding == 0 ? 0 : m_pWindow->rounding() * pMonitor->scale + *PBORDERSIZE;
     CBox       fullBox       = {m_vLastWindowPos.x, m_vLastWindowPos.y, m_vLastWindowSize.x, m_vLastWindowSize.y};
 
-    fullBox.translate(offset - pMonitor->vecPosition);
+    fullBox.translate(offset - pMonitor->vecPosition + WORKSPACEOFFSET);
 
     double fullThickness = 0;
 
@@ -83,6 +120,11 @@ void CBordersPlusPlus::draw(CMonitor* pMonitor, float a, const Vector2D& offset)
     }
 
     m_seExtents = {{fullThickness, fullThickness}, {fullThickness, fullThickness}};
+
+    if (fullThickness != m_fLastThickness) {
+        m_fLastThickness = fullThickness;
+        g_pDecorationPositioner->repositionDeco(this);
+    }
 }
 
 eDecorationType CBordersPlusPlus::getDecorationType() {
@@ -90,11 +132,7 @@ eDecorationType CBordersPlusPlus::getDecorationType() {
 }
 
 void CBordersPlusPlus::updateWindow(CWindow* pWindow) {
-    const auto PWORKSPACE = g_pCompositor->getWorkspaceByID(pWindow->m_iWorkspaceID);
-
-    const auto WORKSPACEOFFSET = PWORKSPACE && !pWindow->m_bPinned ? PWORKSPACE->m_vRenderOffset.vec() : Vector2D();
-
-    m_vLastWindowPos  = pWindow->m_vRealPosition.vec() + WORKSPACEOFFSET;
+    m_vLastWindowPos  = pWindow->m_vRealPosition.vec();
     m_vLastWindowSize = pWindow->m_vRealSize.vec();
 
     damageEntire();

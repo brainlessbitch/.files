@@ -1,41 +1,58 @@
-import { Widget, Network } from "../../imports.js";
+import { Widget, Network, Bluetooth } from "../../imports.js";
 const { Window, Box, CenterBox } = Widget;
 
 // Widgets
-import { CardsIcon } from "./icon.js";
+import { HeartIcon } from "./icon.js";
 import { Workspaces } from "./workspaces.js";
 import { Tray } from "./tray.js";
 import { BatteryWidget } from "./battery.js";
 import { Clock } from "./clock.js";
+import { pfp } from "./pfp.js";
 
 const NetworkWidget = () =>
 	Widget.Label({
 		className: "wifiIcon",
 		label: "󰤭",
-		connections: [
-			[
-				Network,
-				(self) => {
-					if (Network.wifi.internet === "disconnected") {
-						self.label = "󰤭";
-					} else {
-						self.label = "󰤨";
-					}
-				},
-			],
-		],
+		setup: (self) => {
+			self.hook(Network, (self) => {
+				if (Network.wifi.internet === "disconnected") {
+					self.className = "wifiIcon off";
+					self.label = "󰤭";
+				} else {
+					self.className = "wifiIcon";
+					self.label = "󰤨";
+				}
+			});
+		},
+	});
+
+const BluetoothWidget = () =>
+	Widget.Label({
+		className: "bluetoothIcon",
+		label: "󰂲",
+		setup: (self) => {
+			self.hook(Bluetooth, (self) => {
+				if (Bluetooth.enabled) {
+					self.className = "bluetoothIcon";
+					self.label = "󰂯";
+				} else {
+					self.className = "bluetoothIcon off";
+					self.label = "󰂲";
+				}
+			});
+		},
 	});
 
 const Left = () =>
 	Box({
 		className: "barLeft",
 		hpack: "start",
-		children: [CardsIcon()],
+		children: [HeartIcon(), Workspaces()],
 	});
 
 const Center = () =>
 	Box({
-		children: [Workspaces()],
+		children: [],
 	});
 
 const Right = () =>
@@ -46,9 +63,10 @@ const Right = () =>
 			Tray(),
 			Box({
 				className: "systemInfo",
-				children: [NetworkWidget(), BatteryWidget()],
+				children: [BatteryWidget(), NetworkWidget(), BluetoothWidget()],
 			}),
 			Clock(),
+			pfp(),
 		],
 	});
 
@@ -56,10 +74,10 @@ export const Bar = ({ monitor } = {}) =>
 	Window({
 		//className: 'bar',
 		name: "bar",
-		anchor: ["right", "bottom", "left"],
+		anchor: ["top", "right", "left"],
 		exclusivity: "exclusive",
 		layer: "bottom",
-		margins: [0, 12, 12, 12],
+		margins: [0],
 		monitor,
 		child: CenterBox({
 			className: "bar",

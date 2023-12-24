@@ -5,16 +5,8 @@
     margin: 6px 0;
 }
 
-.dateLabel {
-    background: transparentize($surfaceVariant, 0.45);
-    border-radius: 3px;
-    margin: 0 6px 0 0;
-    padding: 3px 12px; 
-}
-
 .timeLabel {
-    background: transparentize($surfaceVariant, 0.45);
-    border-radius: 6px 24px 24px 6px;
-    margin: 0 6px 0 0;
+    background: $surfaceVariant;
+    border-radius: 24px;
     padding: 3px 12px;
 }

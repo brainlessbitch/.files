@@ -1,10 +1,10 @@
 .workspaces {
-    background: transparentize($surfaceVariant, 0.45);
+    background: $surfaceVariant;
     border-radius: 24px;
-    margin: 6px;
+    margin: 6px 0;
     padding: 3px;
     button {
-        background: transparentize($onSurfaceVariant, 0.45);
+        background: transparentize($onSurfaceVariant, 0.75);
         border-radius: 24px;
         margin: 3px;
         min-height: 1rem;
@@ -13,12 +13,11 @@
             all 0.3s $materialStandard,
             border 0.35s $materialStandard;
         &:hover {
-            background: linear-gradient(to right, transparentize($primary, 0.45), transparentize($tertiary, 0.45));
+            background: transparentize($primary, 0.50);
             min-width: 1.5rem;
         }
         &.focused {
-            background: linear-gradient(to right, $primary, $tertiary);
-            box-shadow: 0 0 4px $primary;
+            background: $primary;
             min-width: 2rem;
         }
     }

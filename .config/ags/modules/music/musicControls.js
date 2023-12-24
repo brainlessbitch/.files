@@ -1,9 +1,9 @@
 import { Widget, Mpris } from "../../imports.js";
 const { Box, Button, Label } = Widget;
 
-export const uwustagramControls = () =>
+export const Controls = () =>
 	Box({
-		className: "uwustagramControls",
+		className: "controls",
 		hpack: "center",
 		children: [
 			Button({
@@ -13,7 +13,7 @@ export const uwustagramControls = () =>
 			}),
 			Button({
 				className: "controlsPlayPause",
-				label: "󰐍",
+				label: "󰐊",
 				onClicked: () => Mpris.players[0].playPause(),
 				connections: [
 					[
@@ -24,8 +24,8 @@ export const uwustagramControls = () =>
 
 							self.label = `${
 								player !== null && player.playBackStatus === "Playing"
-									? "󰏦"
-									: "󰐍"
+									? "󰏤"
+									: "󰐊"
 							}`;
 						},
 					],

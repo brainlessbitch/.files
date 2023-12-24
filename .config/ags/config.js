@@ -5,7 +5,8 @@ import DirectoryMonitorService from "./services/directoryMonitorService.js";
 import { Bar } from "./modules/bar/bar.js";
 import { launcher } from "./modules/launcher/launcher.js";
 import { Desktop } from "./modules/desktop/desktop.js";
-import { Popups } from "./modules/popups/popups.js";
+import { TopLeft, TopRight } from "./modules/desktop/corners.js";
+import { Popups /*NotificationPopups*/ } from "./modules/popups/popups.js";
 import { Music } from "./modules/music/music.js";
 
 import { Terminal } from "./modules/terminal/terminal.js";
@@ -39,5 +40,15 @@ export default {
 		music: 250,
 		terminal: 250,
 	},
-	windows: [Bar(), launcher, Desktop(), Popups(), Music(), Terminal()],
+	windows: [
+		Bar(),
+		launcher,
+		Desktop(),
+		TopLeft(),
+		TopRight(),
+		//NotificationPopups(),
+		Popups(),
+		Music(),
+		Terminal(),
+	],
 };

@@ -1,3 +1,9 @@
 // Components
 @import 'desktopMenu';
 @import 'desktopIcons';
+
+.corner {
+  background: $surface;
+  border-radius: 24px;
+  //-gtk-outline-radius: 24px;
+}

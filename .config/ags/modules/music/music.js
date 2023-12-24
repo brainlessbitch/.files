@@ -1,78 +1,53 @@
 import { Widget, App, Mpris } from "../../imports.js";
 const { Window, Box, Label } = Widget;
 import PopupWindow from "../../utils/popupWindow.js";
-import { uwustagramControls } from "./musicControls.js";
+import { Controls } from "./musicControls.js";
 
 const truncateString = (str, maxLength) =>
 	str.length > maxLength ? `${str.slice(0, maxLength)}...` : str;
 
-const uwustagramArtist = () =>
-	Box({
-		className: "uwustagramArtist",
-		children: [
-			Label({
-				className: "artistIcon",
-				label: "󰀉",
-			}),
-			Label({
-				className: "artist",
-				label: "N/A",
-				useMarkup: true,
-				connections: [
-					[
-						Mpris,
-						(self) => {
-							const player = Mpris.players[0];
-							if (!player) return;
-
-							self.label = `${truncateString(
-								`${player.trackArtists.join(", ")}`,
-								24,
-							)}`;
-						},
-					],
-				],
-			}),
-		],
-	});
-
-const uwustagramCover = () =>
-	Widget.Overlay({
-		child: Box({
-			className: "uwustagramCover",
-			connections: [
-				[
-					Mpris,
-					(self) => {
-						const player = Mpris.players[0];
-						if (!player) return;
-
-						self.css = `background-image: url('${player.coverPath}');`;
-					},
-				],
-			],
-		}),
-		overlays: [
-			Box({
-				className: "uwustagramCoverOverlay",
-				connections: [
-					[
-						Mpris,
-						(self) => {
-							const player = Mpris.players[0];
-							if (!player) return;
-
-							self.css = `background-image: url('${player.coverPath}');`;
-						},
-					],
-				],
-			}),
-		],
-	});
-
-const uwustagramTitle = () =>
+const Artist = () =>
 	Label({
-		className: "uwustagramTitle",
+		className: "artist",
+		hpack: "start",
+		label: "N/A",
+		useMarkup: true,
+		connections: [
+			[
+				Mpris,
+				(self) => {
+					const player = Mpris.players[0];
+					if (!player) return;
+
+					self.label = `${truncateString(
+						`${player.trackArtists.join(", ")}`,
+						24,
+					)}`;
+				},
+			],
+		],
+	});
+
+const CoverArt = () =>
+	Box({
+		className: "cover",
+		connections: [
+			[
+				Mpris,
+				(self) => {
+					const player = Mpris.players[0];
+					if (!player) return;
+
+					self.css = `background-image: url('${player.coverPath}');`;
+				},
+			],
+		],
+	});
+
+const Title = () =>
+	Label({
+		className: "title",
+		hpack: "start",
 		label: "N/A",
 		justification: "center",
 		connections: [
@@ -88,52 +63,29 @@ const uwustagramTitle = () =>
 		],
 	});
 
-const uwustagramProgress = () =>
-	Widget.ProgressBar({
-		className: "uwustagramProgress",
-		connections: [
-			[
-				1000,
-				(self) => {
-					const player = Mpris.players[0];
-					if (!player) return;
-
-					self.value = player.position / player.length;
-				},
-			],
-		],
-	});
-
 Mpris.connect("player-closed", () => App.closeWindow("music"));
 
 export const Music = ({ monitor } = {}) =>
 	PopupWindow({
 		name: "music",
-		anchor: ["right"],
+		anchor: ["bottom", "left"],
 		layer: "overlay",
-		margins: [0, 24, 0, 0],
-		transition: "slide_left",
+		margins: [0, 0, 12, 12],
+		transition: "slide_up",
 		popup: true,
 		child: Box({
 			className: "music",
-			vertical: true,
 			children: [
-				Label({
-					className: "uwustagramHeader",
-					label: "<i>uwustagram</i>",
-					justification: "center",
-					useMarkup: true,
+				CoverArt(),
+				Box({
+					children: [
+						Box({
+							vertical: true,
+							children: [Title(), Artist()],
+						}),
+						Controls(),
+					],
 				}),
-				uwustagramArtist(),
-				uwustagramCover(),
-				Label({
-					className: "uwustagramButtons",
-					label: "󰣐  󰭹  󰒊",
-					hpack: "start",
-				}),
-				uwustagramTitle(),
-				uwustagramProgress(),
-				uwustagramControls(),
 			],
 		}),
 	});

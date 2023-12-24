@@ -23,24 +23,21 @@ export default ({
 				transition,
 				transitionDuration,
 				child: child || Box(),
-				connections: [
-					[
-						App,
-						(rev, currentName, isOpen) => {
-							if (currentName === name) {
-								rev.revealChild = isOpen;
+				setup: (self) => {
+					self.hook(App, (rev, currentName, isOpen) => {
+						if (currentName === name) {
+							rev.revealChild = isOpen;
 
-								if (isOpen) {
-									onOpen(window);
-								} else {
-									Utils.timeout(transitionDuration, () => {
-										onClose(window);
-									});
-								}
+							if (isOpen) {
+								onOpen(window);
+							} else {
+								Utils.timeout(transitionDuration, () => {
+									onClose(window);
+								});
 							}
-						},
-					],
-				],
+						}
+					});
+				},
 			}),
 		}),
 	});
