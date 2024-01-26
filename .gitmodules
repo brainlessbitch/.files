@@ -1,0 +1,3 @@
+[submodule "home/walls"]
+	path = home/walls
+	url = git@github.com:exoess/.walls.git
