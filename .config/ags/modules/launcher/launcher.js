@@ -77,42 +77,36 @@ const Launcher = () => {
 	return Widget.Box({
 		className: "launcher",
 		vertical: true,
+		setup: (self) => {
+			self.hook(App, (_, name, visible) => {
+				if (name !== WINDOW_NAME) return;
+
+				list.children = Applications.list.map(AppItem);
+
+				entry.text = "";
+				if (visible) entry.grab_focus();
+			});
+		},
 		children: [
 			entry,
 			Widget.Scrollable({
 				hscroll: "never",
-				css: `
-          min-width: 120px;
-          min-height: 240px;
-        `,
+				css: "min-width: 180px; min-height: 360px;",
 				child: list,
 			}),
-		],
-		connections: [
-			[
-				App,
-				(_, name, visible) => {
-					if (name !== WINDOW_NAME) return;
-
-					list.children = Applications.list.map(AppItem);
-
-					entry.text = "";
-					if (visible) entry.grab_focus();
-				},
-			],
 		],
 	});
 };
 
 export const launcher = PopupWindow({
 	name: WINDOW_NAME,
-	anchor: ["top", "left"],
+	anchor: ["top"],
 	//exclusivity: 'exclusive',
 	layer: "overlay",
-	margins: [12, 0, 0, 12],
+	margins: [12],
 	transition: "slide_down",
+	transitionDuration: 150,
 	popup: true,
-	visible: false,
 	focusable: true,
 	child: Launcher(),
 });

@@ -1,43 +1,23 @@
 .launcher {
-    color: $onSurface;
-    background: $surface;
-    font-family: $font;
-    border-radius: 24px;
-    padding: 6px;
-}
-
-.launcherApp {
-    border-radius: 24px;
-    margin: 6px;
-    padding: 6px 12px;
-    &:focus {
-        color: $onSurfaceVariant;
-        background: $surfaceVariant;
-    }
+  font-family: $font;
+  background: $c0;
 }
 
 .launcherEntry {
-    color: $onSurfaceVariant;
-    caret-color: $onSurfaceVariant;
-    background: $surfaceVariant;
-    border-radius: 24px;
-    margin: 6px;
-    padding: 6px 12px;
+  background: $bg;
 }
 
-.launcherItem {}
+.launcherApp {
+  &:focus {
+    background: $bg;
+  }
+}
+
+.launcherItem {
+}
+
+.launcherItemTtitle {
+}
 
 .launcherItemIcon {
-    margin: 0 6px 0 0;
 }
-
-.launcherItemTitle {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.launcherItemDescription {
-    font-size: 1rem;
-}
-
-

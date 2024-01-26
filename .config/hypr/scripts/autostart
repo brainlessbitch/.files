@@ -1,12 +1,13 @@
 #!/bin/bash
 
 run() {
-  if ! pgrep -f "$1" ;
-  then
-    "$@"&
-  fi
+    if ! pgrep -f "$1" ;
+    then
+        "$@"&
+    fi
 }
 
+run "swww" init
 run "ags"
 run "nm-applet"
 run "blueman-applet"

@@ -1,315 +1,397 @@
-*:not(tooltip) {
+*:not(selection):not(tooltip) {
   all: unset; }
 
-.icon {
-  color: #c6c5d0;
-  background: #45464f;
-  font-family: SymbolsNerdFontMono;
-  border-radius: 24px;
-  margin: 6px;
-  padding: 6px;
-  transition: all 0.2s cubic-bezier(0.3, 0, 1, 1); }
-  .icon:hover {
-    color: #b8c3ff;
-    background: #45464f; }
-
 .workspaces {
-  background: #45464f;
-  border-radius: 24px;
-  margin: 6px 0;
-  padding: 3px; }
+  margin: 3px 0; }
   .workspaces button {
-    background: rgba(198, 197, 208, 0.25);
-    border-radius: 24px;
-    margin: 3px;
-    min-height: 1rem;
+    margin: 0 3px;
     min-width: 1rem;
-    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1); }
+    min-height: 1rem;
+    border-radius: 24px;
+    background: #575e63;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
     .workspaces button:hover {
-      background: rgba(184, 195, 255, 0.5);
-      min-width: 1.5rem; }
+      min-width: 1.5rem;
+      background: #949ca1; }
     .workspaces button.focused {
-      background: #b8c3ff;
-      min-width: 2rem; }
-
-.tray {
-  margin: 0; }
-
-.trayChevron {
-  font-family: SymbolsNerdFontMono; }
-
-.trayIcons {
-  margin: 0 0 0 6px; }
-
-.trayIcon {
-  margin: 0 0.025rem; }
-
-.battery {
-  margin: 0; }
+      min-width: 2rem;
+      background: #D5D8DA; }
 
 .clock {
-  color: #c6c5d0;
-  font-family: Roboto;
-  font-weight: 500;
-  margin: 6px 0; }
+  color: #D5D8DA; }
 
 .timeLabel {
-  background: #45464f;
-  border-radius: 24px;
-  padding: 3px 12px; }
+  font-weight: 500; }
 
-.pfp {
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  margin: 6px;
-  padding: 6px;
-  min-height: 1rem;
-  min-width: 1rem; }
-
-.bar {
-  color: #e4e1e6;
-  background: #1b1b1f;
-  font-family: Roboto; }
+.dateLabel {
+  margin-right: 6px; }
 
 .systemInfo {
-  color: #c6c5d0;
-  background: #45464f;
   font-family: SymbolsNerdFontMono;
-  border-radius: 24px;
-  margin: 6px;
-  padding: 3px 12px; }
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  /*&:hover {
+    padding: 0 6px;
+    border-radius: 6px;
+    background: transparentize($bg, 0.5);
+  }*/ }
 
-.wifiIcon {
-  margin: 0 3px; }
-  .wifiIcon.off {
-    color: rgba(198, 197, 208, 0.25); }
+.barWifiIcon {
+  color: #D5D8DA; }
+  .barWifiIcon.off {
+    color: #747d84; }
 
-.bluetoothIcon.off {
-  color: rgba(198, 197, 208, 0.5); }
+.barBluetoothIcon {
+  color: #D5D8DA;
+  margin-left: 3px; }
+  .barBluetoothIcon.off {
+    color: #747d84; }
 
-.launcher {
-  color: #e4e1e6;
-  background: #1b1b1f;
-  font-family: Roboto;
-  border-radius: 24px;
-  padding: 6px; }
+.bar {
+  font-family: Roboto; }
 
-.launcherApp {
-  border-radius: 24px;
-  margin: 6px;
-  padding: 6px 12px; }
-  .launcherApp:focus {
-    color: #c6c5d0;
-    background: #45464f; }
-
-.launcherEntry {
-  color: #c6c5d0;
-  caret-color: #c6c5d0;
-  background: #45464f;
-  border-radius: 24px;
-  margin: 6px;
-  padding: 6px 12px; }
-
-.launcherItemIcon {
-  margin: 0 6px 0 0; }
-
-.launcherItemTitle {
-  font-size: 1rem;
-  font-weight: 500; }
-
-.launcherItemDescription {
-  font-size: 1rem; }
-
-.desktopMenu {
-  color: #e4e1e6;
-  background: rgba(27, 27, 31, 0.1);
-  font-family: Roboto;
-  border: solid #90909a;
-  border-width: 1px 0;
-  border-radius: 24px;
-  padding: 6px; }
-
-.desktopMenuItem {
-  border-radius: 24px;
-  margin: 0 3px;
-  padding: 6px 12px;
-  transition: all 200ms cubic-bezier(0, 0, 1, 1); }
-  .desktopMenuItem:hover {
-    color: #c6c5d0;
-    background: rgba(69, 70, 79, 0.55); }
-
-.desktopMenuItemIcon {
-  font-family: SymbolsNerdFontMono;
-  padding: 0 6px 0 0; }
-
-.desktopMenuItemSubmenuArrow {
-  color: rgba(228, 225, 230, 0.55);
-  font-family: Roboto;
-  padding: 0 0 0 6px; }
-
-.separator {
-  background: #45464f; }
-
-.desktopIcons {
-  margin: 24px 0 0 24px; }
-
-.desktopIcon {
-  border-radius: 12px;
+.userInfo {
+  color: #D5D8DA;
+  font-weight: 500;
+  margin-bottom: 6px;
   padding: 6px;
-  transition: all 200ms cubic-bezier(0, 0, 1, 1); }
-  .desktopIcon:hover {
-    background: rgba(184, 195, 255, 0.5); }
+  border-radius: 6px;
+  background: #1C1E26; }
 
-.desktopIconLabel {
-  color: #e4e1e6;
-  font-family: 'SourceHanSansJP'; }
-
-.corner {
-  background: #1b1b1f;
-  border-radius: 24px; }
-
-.brightnessPopup {
-  color: #e4e1e6;
-  background: #1b1b1f;
+.pfp {
+  padding: 6px;
+  min-width: 1rem;
+  min-height: 1rem;
   border-radius: 24px;
-  margin: 6px;
-  padding: 12px; }
+  background-size: 100% auto;
+  background-repeat: no-repeat; }
 
-.brtPopupIcon {
+.username {
+  margin-left: 6px; }
+
+.hostname {
+  color: #babfc2;
+  font-size: 0.75rem;
+  font-weight: normal;
+  margin-left: 6px; }
+
+.powerMenu {
   font-family: SymbolsNerdFontMono;
-  margin: 0 6px 0 0; }
-
-.brtPopupBar {
-  min-width: 120px; }
-  .brtPopupBar scale {
-    min-height: 12px; }
-  .brtPopupBar trough {
-    background: rgba(69, 70, 79, 0.5);
-    border-radius: 24px;
-    min-height: 12px; }
-  .brtPopupBar highlight {
-    background: #b8c3ff;
-    border-radius: 24px;
-    min-width: 12px; }
-
-.volumePopup {
-  color: #e4e1e6;
-  background: #1b1b1f;
+  padding: 6px;
+  min-width: 1rem;
+  min-height: 1rem;
   border-radius: 24px;
-  margin: 6px;
-  padding: 12px; }
+  background: #232530; }
 
-.volPopupIcon {
+.power {
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+  .power:hover {
+    color: #E95678; }
+
+.reboot {
+  margin: 0 3px;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+  .reboot:hover {
+    color: #FAB795; }
+
+.suspend {
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+  .suspend:hover {
+    color: #EE64AC; }
+
+.lock {
+  margin: 0 3px;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+  .lock:hover {
+    color: #29D398; }
+
+.exit {
+  margin-left: 3px;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+  .exit:hover {
+    color: #26BBD9; }
+
+.volumeSlider {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 6px;
+  background: #1C1E26; }
+
+.volLabel {
+  margin-bottom: 6px; }
+
+.volIcon {
   font-family: SymbolsNerdFontMono;
-  margin: 0 6px 0 0; }
+  margin-right: 6px; }
 
-.volPopupBar {
-  min-width: 120px; }
-  .volPopupBar scale {
-    min-height: 12px; }
-  .volPopupBar trough {
-    background: rgba(69, 70, 79, 0.5);
+.volSlider {
+  min-width: 180px; }
+  .volSlider slider {
+    min-height: 1rem;
+    min-width: 1rem;
     border-radius: 24px;
-    min-height: 12px; }
-  .volPopupBar highlight {
-    background: #b8c3ff;
+    background: #5acbe2;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+    .volSlider slider:hover {
+      background: #8edceb; }
+  .volSlider trough {
+    padding: 0 0.5rem;
+    min-height: 1rem;
     border-radius: 24px;
-    min-width: 12px; }
+    background: rgba(38, 187, 217, 0.5); }
+  .volSlider highlight {
+    margin: 0 -0.5rem;
+    min-width: 1rem;
+    border-radius: 24px;
+    background: #26BBD9; }
 
-.notification {
-  color: #e4e1e6;
-  background: rgba(27, 27, 31, 0.1);
-  border: solid #90909a;
-  border-width: 1px 0;
-  border-radius: 24px; }
-  .notification > * {
-    margin: 6px;
-    padding: 12px;
-    min-width: 240px; }
-  .notification.critical {
-    background: rgba(255, 180, 169, 0.1);
-    border: solid #680003;
-    border-width: 1px 0;
-    border-radius: 24px; }
+.brightnessSlider {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 6px;
+  background: #1C1E26; }
 
-.notificationIcon {
-  margin: 12px 12px 12px 0; }
+.brtLabel {
+  margin-bottom: 6px; }
 
-.notificationTitle {
-  font-weight: 500; }
-
-.notificationBody {
-  color: #a59bac; }
-
-.action-button {
-  margin: 0; }
-
-.action-button:first-child {
-  margin: 0; }
-
-.action-button:last-child {
-  margin: 0; }
-
-.action-button:last-child:first-child {
-  margin: 0; }
-
-.controls {
-  color: #c6c5d0;
-  background: #45464f;
-  border-radius: 24px;
-  margin: 12px 6px; }
-
-.controlsPrev {
+.brtIcon {
   font-family: SymbolsNerdFontMono;
-  font-size: 0.75rem;
-  padding: 0 12px; }
-  .controlsPrev:hover {
-    background: #828392;
-    border-radius: 24px; }
+  margin-right: 6px; }
 
-.controlsPlayPause {
-  font-family: SymbolsNerdFontMono;
-  font-size: 0.75rem;
-  padding: 0 12px; }
-  .controlsPlayPause:hover {
-    background: #828392;
-    border-radius: 24px; }
-
-.controlsNext {
-  font-family: SymbolsNerdFontMono;
-  font-size: 0.75rem;
-  padding: 0 12px; }
-  .controlsNext:hover {
-    background: #828392;
-    border-radius: 24px; }
+.brtSlider {
+  min-width: 180px; }
+  .brtSlider slider {
+    min-height: 1rem;
+    min-width: 1rem;
+    border-radius: 24px;
+    background: #fddfcf;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+    .brtSlider slider:hover {
+      background: white; }
+  .brtSlider trough {
+    padding: 0 0.5rem;
+    min-height: 1rem;
+    border-radius: 24px;
+    background: rgba(250, 183, 149, 0.5); }
+  .brtSlider highlight {
+    margin: 0 -0.5rem;
+    min-width: 1rem;
+    border-radius: 24px;
+    background: #FAB795; }
 
 .music {
-  color: #e4e1e6;
-  background: #1b1b1f;
-  font-family: Roboto;
+  color: #D5D8DA;
+  margin-top: 6px;
+  padding: 6px;
+  border: 3px solid #232530;
   border-radius: 6px;
-  padding: 12px;
-  min-width: 240px; }
-
-.artist {
-  font-weight: 500;
-  font-size: 0.75rem;
-  padding: 0 6px; }
+  background: #1C1E26; }
 
 .cover {
-  background-size: 100% auto;
-  background-repeat: no-repeat;
+  min-height: 48px;
+  min-width: 48px;
   border-radius: 6px;
-  min-height: 60px;
-  min-width: 60px; }
+  background: #232530;
+  background-size: 100% auto;
+  background-repeat: no-repeat; }
 
 .title {
   font-weight: 500;
-  padding: 0 6px; }
+  margin-left: 6px; }
+
+.artist {
+  font-size: 0.75rem;
+  margin-left: 6px; }
+
+.controls {
+  font-family: SymbolsNerdFontMono;
+  font-size: 1rem; }
+  .controlsPrev {
+    margin: 0 6px; }
+  .controlsPlayPause {
+    margin: 0 6px; }
+  .controlsNext {
+    margin: 0 6px; }
+
+.controlPanel {
+  font-family: Roboto;
+  padding: 12px;
+  border-radius: 6px;
+  background: #232530; }
+
+.pullDown {
+  padding: 0 6px;
+  min-height: 6px;
+  min-width: 1rem;
+  border-radius: 0 0 6px 6px;
+  background: #282a37;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+  .pullDown:hover {
+    min-height: 12px; }
+
+.uwuifier {
+  padding: 6px;
+  margin-top: 6px;
+  border-radius: 6px;
+  background: #232530; }
+  .uwuifierEntry {
+    padding: 6px;
+    border-radius: 6px;
+    background: #1C1E26; }
+  .uwuifierCopyButton {
+    font-family: SymbolsNerdFontMono;
+    padding: 6px;
+    margin-left: 6px;
+    min-width: 1rem;
+    min-height: 1rem;
+    border-radius: 6px;
+    background: #1C1E26;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+    .uwuifierCopyButton:hover {
+      background: #292c38; }
+
+.screwsPanel {
+  margin-top: 6px;
+  border-radius: 6px;
+  background: #1C1E26; }
+
+.wifi {
+  margin-right: 6px;
+  padding: 12px;
+  border-radius: 6px;
+  background: #26BBD9; }
+  .wifi.off {
+    color: rgba(213, 216, 218, 0.5);
+    background: #1C1E26; }
+
+.wifiIcon {
+  font-family: SymbolsNerdFontMono;
+  font-size: 1rem;
+  margin-right: 6px; }
+
+.wifiLabel {
+  margin-right: 6px; }
+
+.networkLabel {
+  color: #D5D8DA;
+  font-size: 0.75rem;
+  margin-right: 6px; }
+
+.bluetooth {
+  margin: 6px 6px 0 0;
+  padding: 12px;
+  border-radius: 6px;
+  background: #26BBD9; }
+  .bluetooth.off {
+    color: rgba(213, 216, 218, 0.5);
+    background: #1C1E26; }
+
+.bluetoothIcon {
+  font-family: SymbolsNerdFontMono;
+  font-size: 1rem;
+  margin-right: 6px; }
+  .bluetoothIcon.off {
+    color: rgba(213, 216, 218, 0.5);
+    background: rgba(38, 187, 217, 0.5); }
+
+.bluetoothLabel {
+  margin-right: 6px; }
+
+@keyframes lowBlinkFg {
+  0% {
+    color: #E95678; }
+  50% {
+    color: #D5D8DA; }
+  100% {
+    color: #E95678; } }
+
+@keyframes lowBlink {
+  0% {
+    color: #E95678;
+    background: rgba(233, 86, 120, 0.5); }
+  50% {
+    color: #D5D8DA;
+    background: rgba(213, 216, 218, 0.5); }
+  100% {
+    color: #E95678;
+    background: rgba(233, 86, 120, 0.5); } }
+
+.battery {
+  padding: 12px;
+  border-radius: 6px;
+  background: #1C1E26; }
+
+.batIcon {
+  color: #29D398;
+  font-family: SymbolsNerdFontMono;
+  font-size: 1.5rem;
+  padding: 1.5rem; }
+  .batIcon.low {
+    animation: lowBlinkFg 1s infinite; }
+
+.batPercentBar {
+  color: #29D398;
+  font-size: 0.75rem;
+  background: rgba(41, 211, 152, 0.5); }
+  .batPercentBar.low {
+    animation: lowBlink 1s infinite; }
+
+.launcher {
+  font-family: Roboto;
+  background: #232530; }
+
+.launcherEntry {
+  background: #1C1E26; }
+
+.launcherApp:focus {
+  background: #1C1E26; }
+
+.brightnessPopup {
+  color: #D5D8DA;
+  margin: 0 6px 0 0;
+  padding: 3px;
+  border-radius: 24px;
+  background: #232530; }
+
+.brtPopupIcon {
+  font-family: SymbolsNerdFontMono;
+  margin: 3px 0 3px 0; }
+
+.brtPopupBar {
+  margin: 3px 0;
+  min-height: 120px; }
+  .brtPopupBar trough {
+    min-width: 0.5rem;
+    border-radius: 24px;
+    background: rgba(250, 183, 149, 0.5); }
+  .brtPopupBar highlight {
+    min-height: 0.5rem;
+    border-radius: 24px;
+    background: #FAB795; }
+
+.volumePopup {
+  color: #D5D8DA;
+  margin: 0 6px 0 0;
+  padding: 3px;
+  border-radius: 24px;
+  background: #232530; }
+
+.volPopupIcon {
+  font-family: SymbolsNerdFontMono;
+  margin: 3px 0 3px 0; }
+
+.volPopupBar {
+  margin: 3px 0;
+  min-height: 120px; }
+  .volPopupBar trough {
+    min-width: 0.5rem;
+    border-radius: 24px;
+    background: rgba(38, 187, 217, 0.5); }
+  .volPopupBar highlight {
+    min-height: 0.5rem;
+    border-radius: 24px;
+    background: #26BBD9; }
 
 .terminal {
-  background: #1b1b1f;
-  border: 2px solid #45464f;
-  border-radius: 24px;
-  padding: 12px; }
+  padding: 12px;
+  border-radius: 0 0 6px 6px;
+  background: rgba(0, 0, 0, 0.1); }

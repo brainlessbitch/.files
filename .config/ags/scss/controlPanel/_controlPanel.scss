@@ -1,0 +1,160 @@
+@import "userInfo";
+@import "volumeSlider";
+@import "brightnessSlider";
+@import "musicWidget";
+
+.controlPanel {
+  font-family: $font;
+  padding: 12px;
+  border-radius: 6px;
+  background: $c0;
+}
+
+.pullDown {
+  padding: 0 6px;
+  min-height: 6px;
+  min-width: 1rem;
+  border-radius: 0 0 6px 6px;
+  background: lighten($c0, 2.4%);
+  transition: all 0.3s $materialStandard;
+  &:hover {
+    min-height: 12px;
+  }
+}
+
+.uwuifier {
+  padding: 6px;
+  margin-top: 6px;
+  border-radius: 6px;
+  background: $c0;
+  &Entry {
+    padding: 6px;
+    border-radius: 6px;
+    background: $bg;
+  }
+  &CopyButton {
+    font-family: $iconFont;
+    padding: 6px;
+    margin-left: 6px;
+    min-width: 1rem;
+    min-height: 1rem;
+    border-radius: 6px;
+    background: $bg;
+    transition: all 0.3s $materialStandard;
+    &:hover {
+      background: lighten($bg, 6%);
+    }
+  }
+}
+
+.screwsPanel {
+  margin-top: 6px;
+  border-radius: 6px;
+  background: $bg;
+}
+
+.wifi {
+  margin-right: 6px;
+  padding: 12px;
+  border-radius: 6px;
+  background: $c4;
+  &.off {
+    color: transparentize($fg, 0.5);
+    background: $bg;
+  }
+}
+
+.wifiIcon {
+  font-family: $iconFont;
+  font-size: 1rem;
+  margin-right: 6px;
+}
+
+.wifiLabel {
+  //font-weight: 500;
+  margin-right: 6px;
+}
+
+.networkLabel {
+  color: $fg;
+  font-size: 0.75rem;
+  margin-right: 6px;
+}
+
+.bluetooth {
+  margin: 6px 6px 0 0;
+  padding: 12px;
+  border-radius: 6px;
+  background: $c4;
+  &.off {
+    color: transparentize($fg, 0.5);
+    background: $bg;
+  }
+}
+
+.bluetoothIcon {
+  font-family: $iconFont;
+  font-size: 1rem;
+  margin-right: 6px;
+  &.off {
+    color: transparentize($fg, 0.5);
+    background: transparentize($c4, 0.5);
+  }
+}
+
+.bluetoothLabel {
+  //font-weight: 500;
+  margin-right: 6px;
+}
+
+@keyframes lowBlinkFg {
+  0% {
+    color: $c1;
+  }
+  50% {
+    color: $fg;
+  }
+  100% {
+    color: $c1;
+  }
+}
+
+@keyframes lowBlink {
+  0% {
+    color: $c1;
+    background: transparentize($c1, 0.5);
+  }
+  50% {
+    color: $fg;
+    background: transparentize($fg, 0.5);
+  }
+  100% {
+    color: $c1;
+    background: transparentize($c1, 0.5);
+  }
+}
+
+.battery {
+  padding: 12px;
+  border-radius: 6px;
+  background: $bg;
+}
+
+.batIcon {
+  color: $c2;
+  font-family: $iconFont;
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  &.low {
+    animation: lowBlinkFg 1s infinite;
+  }
+}
+
+.batPercentBar {
+  color: $c2;
+  font-size: 0.75rem;
+  background: transparentize($c2, 0.5);
+  &.low {
+    animation: lowBlink 1s infinite;
+  }
+}

@@ -1,12 +1,11 @@
 .clock {
-    color: $onSurfaceVariant;
-    font-family: $font;
-    font-weight: 500;
-    margin: 6px 0;
+  color: $fg;
 }
 
 .timeLabel {
-    background: $surfaceVariant;
-    border-radius: 24px;
-    padding: 3px 12px;
+  font-weight: 500;
+}
+
+.dateLabel {
+  margin-right: 6px;
 }

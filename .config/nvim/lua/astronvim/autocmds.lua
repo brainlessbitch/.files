@@ -332,8 +332,18 @@ autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
   end,
 })
 
-autocmd({ "BufWritePre" }, {
-  command = ":silent lua vim.lsp.buf.format()"
+autocmd("BufWritePre", {
+  command = ":silent lua vim.lsp.buf.format()",
+})
+
+autocmd("FileType", {
+  command = ":set spell textwidth=60 colorcolumn=+1",
+  pattern = "tex",
+})
+
+autocmd("FileType", {
+  command = ":set textwidth=0",
+  pattern = "scheme",
 })
 
 cmd(

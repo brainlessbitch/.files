@@ -1,25 +1,19 @@
 .workspaces {
-    background: $surfaceVariant;
+  margin: 3px 0;
+  & button {
+    margin: 0 3px;
+    min-width: 1rem;
+    min-height: 1rem;
     border-radius: 24px;
-    margin: 6px 0;
-    padding: 3px;
-    button {
-        background: transparentize($onSurfaceVariant, 0.75);
-        border-radius: 24px;
-        margin: 3px;
-        min-height: 1rem;
-        min-width: 1rem;
-        transition:
-            all 0.3s $materialStandard,
-            border 0.35s $materialStandard;
-        &:hover {
-            background: transparentize($primary, 0.50);
-            min-width: 1.5rem;
-        }
-        &.focused {
-            background: $primary;
-            min-width: 2rem;
-        }
+    background: darken($fg, 48%);
+    transition: all 0.3s $materialStandard;
+    &:hover {
+      min-width: 1.5rem;
+      background: darken($fg, 24%);
     }
+    &.focused {
+      min-width: 2rem;
+      background: $fg;
+    }
+  }
 }
-

@@ -1,0 +1,77 @@
+.userInfo {
+  color: $fg;
+  font-weight: 500;
+  margin-bottom: 6px;
+  padding: 6px;
+  border-radius: 6px;
+  background: $bg;
+}
+
+.pfp {
+  padding: 6px;
+  min-width: 1rem;
+  min-height: 1rem;
+  //border: 2px solid $fg;
+  border-radius: 24px;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.username {
+  margin-left: 6px;
+}
+
+.hostname {
+  color: darken($fg, 10%);
+  font-size: 0.75rem;
+  font-weight: normal;
+  margin-left: 6px;
+}
+
+.powerMenu {
+  font-family: $iconFont;
+  padding: 6px;
+  min-width: 1rem;
+  min-height: 1rem;
+  border-radius: 24px;
+  background: $c0;
+}
+
+.power {
+  transition: all 0.3s $materialStandard;
+  &:hover {
+    color: $c1;
+  }
+}
+
+.reboot {
+  margin: 0 3px;
+  transition: all 0.3s $materialStandard;
+  &:hover {
+    color: $c3;
+  }
+}
+
+.suspend {
+  transition: all 0.3s $materialStandard;
+  &:hover {
+    color: $c5;
+  }
+}
+
+.lock {
+  margin: 0 3px;
+  transition: all 0.3s $materialStandard;
+  &:hover {
+    color: $c2;
+  }
+}
+
+.exit {
+  margin-left: 3px;
+  transition: all 0.3s $materialStandard;
+  //margin: 0 -3px 0 3px;
+  &:hover {
+    color: $c4;
+  }
+}

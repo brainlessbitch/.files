@@ -19,6 +19,8 @@ const PercentBar = () =>
 	Slider({
 		className: "brtPopupBar",
 		drawValue: false,
+		vertical: true,
+		inverted: true,
 		onChange: ({ value }) => (Brightness.screen = value),
 		setup: (self) => {
 			self.hook(Brightness, (self) => (self.value = Brightness.screen));
@@ -30,10 +32,11 @@ export const BrightnessPopup = () =>
 		css: `min-height: 1px;
           min-width: 1px;`,
 		child: Widget.Revealer({
-			transition: "slide_up",
+			transition: "slide_left",
 			child: Box({
 				className: "brightnessPopup",
-				children: [BrightnessIcon(), PercentBar()],
+				vertical: true,
+				children: [PercentBar(), BrightnessIcon()],
 			}),
 			attribute: { count: 0 },
 			setup: (self) => {

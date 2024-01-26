@@ -16,15 +16,23 @@ fi
 
 export HISTORY_IGNORE="(cd|cd -|cd ..|exit|history|ls|pwd|sudo reboot)"
 
-if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.local/bin" ];
+then PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.cargo/bin" ];
+then PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+if [ -d "$HOME/.ghcup/bin" ];
+then PATH="$HOME/.ghcup/bin:$PATH"
 fi
 
 # Load Engine
 autoload -Uz compinit
 
 for dump in ~/.config/zsh/zcompdump(N.mh+24); do
-  compinit -d ~/.config/zsh/zcompdump
+    compinit -d ~/.config/zsh/zcompdump
 done
 
 compinit -C -d ~/.config/zsh/zcompdump
@@ -66,8 +74,8 @@ bindkey '^[[B' history-substring-search-down
 
 # Change Terminal Title
 function xterm_title_precmd () {
-	print -Pn -- '\e]2;%n@%m %~\a'
-	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
+    print -Pn -- '\e]2;%n@%m %~\a'
+    [[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
 }
 
 function xterm_title_preexec () {
@@ -89,8 +97,13 @@ alias ls='lsd -a --group-directories-first'
 #alias ls='lsd -a --group-directories-first --icon never'
 alias ll='lsd -la --group-directories-first'
 #alias ll='lsd -la --group-directories-first --icon never'
+alias rmr='rm -r'
 
-alias agsReload="~/.config/ags/scripts/reload"
+alias agsReload="$HOME/.config/ags/scripts/reload"
+alias patternEditor="ags -b 'wall' -r 'patternEditor'"
+
+alias fetch="neofetch"
+alias qrFetch="$HOME/.config/neofetch/qrfetch/qrfetch"
 
 # Autostart
 
@@ -117,8 +130,8 @@ fi
 #echo -e "\e[1;32m---,--'-{\e[0;31m@"
 
 # Starship
-if [[ $VTE == true ]]; then 
-    export STARSHIP_CONFIG=~/pure.toml
+if [[ $VTE == true ]]; then
+    export STARSHIP_CONFIG=~/starship.toml
 else
     export STARSHIP_CONFIG=~/starship.toml
 fi

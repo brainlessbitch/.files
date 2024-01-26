@@ -1,35 +1,32 @@
-// Components
-@import 'icon';
-@import 'workspaces';
-@import 'tray';
-@import 'battery';
-@import 'clock';
-@import 'pfp';
-
-.bar {
-    color: $onSurface;
-    background: $surface;
-    font-family: $font;
-}
+@import "workspaces";
+@import "clock";
 
 .systemInfo {
-    color: $onSurfaceVariant;
-    background: $surfaceVariant;
-    font-family: $iconFont;
-    border-radius: 24px;
-    margin: 6px;
-    padding: 3px 12px;
+  font-family: $iconFont;
+  transition: all 0.3s $materialStandard;
+  /*&:hover {
+    padding: 0 6px;
+    border-radius: 6px;
+    background: transparentize($bg, 0.5);
+  }*/
 }
 
-.wifiIcon {
-    margin: 0 3px;
-    &.off {
-        color: transparentize($onSurfaceVariant, 0.75);
-    }
+.barWifiIcon {
+  color: $fg;
+  //margin: 0 3px;
+  &.off {
+    color: darken($fg, 36%);
+  }
 }
 
-.bluetoothIcon {
-    &.off {
-        color: transparentize($onSurfaceVariant, 0.50);
-    }
+.barBluetoothIcon {
+  color: $fg;
+  margin-left: 3px;
+  &.off {
+    color: darken($fg, 36%);
+  }
+}
+
+.bar {
+  font-family: $font;
 }

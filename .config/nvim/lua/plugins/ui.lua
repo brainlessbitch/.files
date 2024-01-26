@@ -68,7 +68,24 @@ return {
     init = function() require("astronvim.utils").load_plugin_with_func("dressing.nvim", vim.ui, { "input", "select" }) end,
     opts = {
       input = { default_prompt = "➤ " },
-      select = { backend = { "telescope", "builtin" } },
+      select = {
+        get_config = function(opts)
+          if opts.backend == "builtin" then
+            return {
+              backend = "builtin",
+              builtin = {
+                show_numbers = false,
+                border = "single",
+                win_options = {
+                  winhighlight = "FloatBorder:Normal",
+                },
+                min_height = 0
+              }
+            }
+          end
+        end,
+        backend = { "telescope", "builtin" }
+      },
     },
   },
   {

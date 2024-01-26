@@ -1,0 +1,41 @@
+.brightnessSlider {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 6px;
+  background: $bg;
+}
+
+.brt {
+  &Label {
+    margin-bottom: 6px;
+  }
+  &Icon {
+    font-family: $iconFont;
+    margin-right: 6px;
+  }
+  &Slider {
+    min-width: 180px;
+    & slider {
+      min-height: 1rem;
+      min-width: 1rem;
+      border-radius: 24px;
+      background: lighten($c3, 12%);
+      transition: all 0.3s $materialStandard;
+      &:hover {
+        background: lighten($c3, 24%);
+      }
+    }
+    & trough {
+      padding: 0 0.5rem;
+      min-height: 1rem;
+      border-radius: 24px;
+      background: transparentize($c3, 0.5);
+    }
+    & highlight {
+      margin: 0 -0.5rem;
+      min-width: 1rem;
+      border-radius: 24px;
+      background: $c3;
+    }
+  }
+}

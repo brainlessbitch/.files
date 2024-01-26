@@ -28,6 +28,8 @@ const PercentBar = () =>
 	Slider({
 		className: "volPopupBar",
 		drawValue: false,
+		vertical: true,
+		inverted: true,
 		onChange: ({ value }) => (Audio.speaker.volume = value),
 		setup: (self) => {
 			self.hook(
@@ -47,10 +49,11 @@ export const VolumePopup = () =>
 		css: `min-height: 1px;
           min-width: 1px;`,
 		child: Widget.Revealer({
-			transition: "slide_up",
+			transition: "slide_left",
 			child: Box({
 				className: "volumePopup",
-				children: [VolumeIcon(), PercentBar()],
+				vertical: true,
+				children: [PercentBar(), VolumeIcon()],
 			}),
 			attribute: { count: 0 },
 			setup: (self) => {

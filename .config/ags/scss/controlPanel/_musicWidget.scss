@@ -1,0 +1,41 @@
+.music {
+  color: $fg;
+  margin-top: 6px;
+  padding: 6px;
+  border: 3px solid $c0;
+  border-radius: 6px;
+  background: $bg;
+}
+
+.cover {
+  min-height: 48px;
+  min-width: 48px;
+  border-radius: 6px;
+  background: $c0;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.title {
+  font-weight: 500;
+  margin-left: 6px;
+}
+
+.artist {
+  font-size: 0.75rem;
+  margin-left: 6px;
+}
+
+.controls {
+  font-family: $iconFont;
+  font-size: 1rem;
+  &Prev {
+    margin: 0 6px;
+  }
+  &PlayPause {
+    margin: 0 6px;
+  }
+  &Next {
+    margin: 0 6px;
+  }
+}

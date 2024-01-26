@@ -52,7 +52,7 @@ return {
       auto_install = true,
       highlight = {
         enable = true,
-        disable = function(_, bufnr) return vim.b[bufnr].large_buf end,
+        disable = { function(_, bufnr) return vim.b[bufnr].large_buf end, "latex", "tex" },
       },
       incremental_selection = { enable = true },
       indent = { enable = true },

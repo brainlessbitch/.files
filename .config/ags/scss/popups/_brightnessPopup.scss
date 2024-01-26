@@ -1,29 +1,27 @@
 .brightnessPopup {
-    color: $onSurface;
-    background: $surface;
-    border-radius: 24px;
-    margin: 6px;
-    padding: 12px;
+  color: $fg;
+  margin: 0 6px 0 0;
+  padding: 3px;
+  border-radius: 24px;
+  background: $c0;
 }
 
 .brtPopupIcon {
-    font-family: $iconFont;
-    margin: 0 6px 0 0;
+  font-family: $iconFont;
+  margin: 3px 0 3px 0;
 }
 
 .brtPopupBar {
-    min-width: 120px;
-    & scale {
-        min-height: 12px;
-    }
-    & trough {
-        background: transparentize($surfaceVariant, 0.5);
-        border-radius: 24px;
-        min-height: 12px;
-    }
-    & highlight {
-        background: $primary;
-        border-radius: 24px;
-        min-width: 12px;
-    }
+  margin: 3px 0;
+  min-height: 120px;
+  & trough {
+    min-width: 0.5rem;
+    border-radius: 24px;
+    background: transparentize($c3, 0.5);
+  }
+  & highlight {
+    min-height: 0.5rem;
+    border-radius: 24px;
+    background: $c3;
+  }
 }

@@ -46,7 +46,7 @@ const VteTerminal = Widget.subclass(Vte.Terminal);
 const Emulator = () => {
 	const emulator = Box({
 		className: "terminal",
-		css: "min-height: 360px;",
+		css: "min-height: 480px;",
 		child: VteTerminal({
 			hexpand: true,
 			setup: (self) => {
@@ -61,34 +61,26 @@ const Emulator = () => {
 					null,
 				);
 				self.set_colors(
-					rgbaColor(
-						...hex2rgb(
-							readHex(`${App.configDir}/scss/_colors.scss`, "onSurface"),
-						),
-					),
-					rgbaColor(
-						...hex2rgb(
-							readHex(`${App.configDir}/scss/_colors.scss`, "surface"),
-						),
-					),
+					rgbaColor(...hex2rgb("#D5D8DA")),
+					rgbaColor(0, 0, 0, 0.1),
 					[
-						rgbaColor(23, 20, 33),
-						rgbaColor(192, 28, 40),
-						rgbaColor(38, 162, 105),
-						rgbaColor(162, 115, 76),
-						rgbaColor(18, 72, 139),
-						rgbaColor(163, 71, 186),
-						rgbaColor(42, 161, 179),
-						rgbaColor(208, 207, 204),
+						rgbaColor(...hex2rgb("#232530")),
+						rgbaColor(...hex2rgb("#E95678")),
+						rgbaColor(...hex2rgb("#29D398")),
+						rgbaColor(...hex2rgb("#FAB795")),
+						rgbaColor(...hex2rgb("#26BBD9")),
+						rgbaColor(...hex2rgb("#EE64AC")),
+						rgbaColor(...hex2rgb("#59E1E3")),
+						rgbaColor(...hex2rgb("#F9CBBE")),
 
-						rgbaColor(94, 92, 100),
-						rgbaColor(246, 97, 81),
-						rgbaColor(51, 209, 122),
-						rgbaColor(233, 173, 12),
-						rgbaColor(42, 123, 222),
-						rgbaColor(192, 97, 203),
-						rgbaColor(51, 199, 222),
-						rgbaColor(255, 255, 255),
+						rgbaColor(...hex2rgb("#2E303E")),
+						rgbaColor(...hex2rgb("#EC6A88")),
+						rgbaColor(...hex2rgb("#3FDAA4")),
+						rgbaColor(...hex2rgb("#FBC3A7")),
+						rgbaColor(...hex2rgb("#3FC4DE")),
+						rgbaColor(...hex2rgb("#F075B5")),
+						rgbaColor(...hex2rgb("#6BE4E6")),
+						rgbaColor(...hex2rgb("#FADAD1")),
 					],
 				);
 				self.set_font(Pango.FontDescription.from_string("MapleMonoNF 12"));
@@ -126,13 +118,15 @@ const Emulator = () => {
 	return emulator;
 };
 
-export const Terminal = ({ monitor } = {}) =>
+export const Terminal = () =>
 	PopupWindow({
 		name: "terminal",
 		anchor: ["top", "right", "left"],
+		exclusivity: "ignore",
 		layer: "overlay",
 		margins: [0],
 		transition: "slide_down",
+		transitionDuration: 150,
 		//popup: true,
 		focusable: true,
 		child: Emulator(),

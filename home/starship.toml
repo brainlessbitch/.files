@@ -4,73 +4,38 @@ $git_status\
 $directory\
 $character
 """
+
 right_format = """
 $cmd_duration\
 """
+
 add_newline = false
 
 [directory]
-format = """
-[](fg:purple)\
-[󰤇 ](fg:black bg:purple)\
-[ ](fg:purple bg:black)\
-[$read_only]($read_only_style)\
-[$path]($style)\
-[](fg:black)\
-"""
-style = "fg:white bg:black"
+format = "[ [$read_only]($read_only_style)$path ]($style)"
+style = "bg:black"
 read_only = "󰌾 "
 read_only_style = "fg:red bg:black"
 truncation_symbol = "<"
 truncation_length = 3
 
-[directory.substitutions]
-
 [character]
-format = " $symbol "
-success_symbol = "[❯](bold purple)"
-error_symbol = "[❯](bold red)"
-vimcmd_symbol = "[❮](bold green)"
-
-[cmd_duration]
-min_time = 500
-format = """
-[](fg:black)[$duration ]($style)\
-[](fg:yellow bg:black)\
-[ ](fg:black bg:yellow)\
-[](fg:yellow)
-"""
-style = "fg:white bg:black"
+format = " "
 
 [git_branch]
-format = """
-╭[](fg:blue)\
-[$symbol$branch(:$remote_branch)]($style)\
-[](fg:blue)\
-"""
-symbol = "󰘬 "
+format = "[ $branch(:$remote_branch) ]($style)"
 style = "fg:black bg:blue"
 
 [git_status]
-format = """
-─[](fg:cyan)\
-([$all_status$ahead_behind]($style))\
-[](fg:cyan)\n╰\
-"""
+format = "[ $all_status$ahead_behind ]($style)\n"
 style = "fg:black bg:cyan"
-stashed = '\$'
-ahead = "⇡"
-behind = "⇣"
-up_to_date = ""
-diverged = "⇕"
-conflicted = "="
-deleted = "X"
-renamed = "»"
-modified = "!"
-staged = "+"
-untracked = "?"
-typechanged = ""
-ignore_submodules = false
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
 
-[custom]
-
+[cmd_duration]
+min_time = 500
+format = "[ $duration ]($style)"
+style = "fg:black bg:yellow"

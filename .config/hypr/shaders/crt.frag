@@ -5,7 +5,7 @@ precision highp float;
 varying highp vec2 v_texcoord;
 varying highp vec3 v_pos;
 uniform highp sampler2D tex;
-uniform highp float time;
+uniform lowp float time;
 
 #define BORDER_COLOR vec4(vec3(0.0, 0.0, 0.0), 1.0) // black border
 #define BORDER_RADIUS 1.0 // larger vignette radius
@@ -21,6 +21,10 @@ uniform highp float time;
 #define NOISE_THRESHOLD 0.0001
 #define PHOSPHOR_BLUR_AMOUNT 0.77 // Amount of blur for phosphor glow
 #define PHOSPHOR_GLOW_AMOUNT 0.77 // Amount of phosphor glow
+#define SAMPLING_RADIUS 0.0001
+#define SCANLINE_FREQUENCY 540.0
+#define SCANLINE_THICKNESS 0.0507
+#define SCANLINE_TIME time * 471.24
 #define SHARPNESS 0.25
 #define SUPERSAMPLING_SAMPLES 16.0
 #define VIGNETTE_RADIUS 0.8 // larger vignette radius
@@ -37,7 +41,7 @@ vec2 applyBarrelDistortion(vec2 coord, float amt) {
 }
 
 vec4 applyColorCorrection(vec4 color) {
-    color.rgb *= vec3(1.0, 0.875, 1.0);
+    color.rgb *= vec3(1.0, 0.79, 0.89);
     return vec4(color.rgb, 1.0);
 }
 
@@ -185,20 +189,10 @@ vec4 applyAdaptiveSharpen(vec2 tc, vec4 color, sampler2D tex) {
     return sharp_color;
 }
 
-
-#define SCANLINE_TRANSPARENCY 1.35
-#define SAMPLING_RADIUS 0.0001
-#define SCANLINE_FREQUENCY 20.0
-#define SCANLINE_THICKNESS 1.0
-#define SCANLINE_SPEED 5.5
-
 vec4 applyScanlines(vec2 tc, vec4 color) {
-    float scanline = sin(tc.y * SCANLINE_FREQUENCY + time * SCANLINE_SPEED) * 0.5 + 0.5;
-    scanline = smoothstep(0.5 - SCANLINE_THICKNESS * 0.5, 0.5 + SCANLINE_THICKNESS * 0.5, scanline);
-
-    // Adjust visibility using smoothstep
-    float alpha = mix(1.0, SCANLINE_TRANSPARENCY, scanline);
-
+    float scanline = (cos(tc.y * SCANLINE_FREQUENCY + SCANLINE_TIME) *
+                      sin(tc.y * SCANLINE_FREQUENCY + SCANLINE_TIME)) * SCANLINE_THICKNESS;
+    float alpha = clamp(1.0 - abs(scanline), 0.0, 1.0);
     return vec4(color.rgb * alpha, color.a);
 }
 
@@ -481,7 +475,6 @@ void main() {
     vec2 tc_no_dist = v_texcoord;
 
     vec2 tc = applyBarrelDistortion(tc_no_dist, DISTORTION_AMOUNT);
-    // vec2 tc = tc_no_dist;
 
     // [-1, 1]
     vec2 tc_no_dist_symmetric = tc_no_dist * 2.0 - 1.0;
@@ -489,12 +482,12 @@ void main() {
     // [0,1]
     vec2 tc_no_dist_normalized = (tc_no_dist_symmetric + 1.0) / 2.0;
 
-    vec4 color = texture2D(tex, tc);
-    // vec4 color = supersample(tex, tc, SAMPLING_RADIUS, NOISE_THRESHOLD, DENOISE_INTENSITY);
+    // vec4 color = texture2D(tex, tc);
+    vec4 color = supersample(tex, tc, SAMPLING_RADIUS, NOISE_THRESHOLD, DENOISE_INTENSITY);
 
     color = applyAdaptiveSharpen(tc, color, tex);
 
-    // color = applyPhosphorGlow(tc, color, tex);
+    color = applyPhosphorGlow(tc, color, tex);
 
     color = reduceGlare(color);
 
@@ -502,21 +495,18 @@ void main() {
 
     color = applyColorCorrection(color);
 
-    // color /= SUPERSAMPLING_SAMPLES;
+    color /= SUPERSAMPLING_SAMPLES;
 
-    color = mix(applyChromaticAberration(tc, color), color, 0.0);
+    color = mix(applyChromaticAberration(tc, color), color, 0.25);
 
-    color = mix(color, applyVignette(color), 0.1);
+    color = mix(color, applyVignette(color), 0.37);
 
     color = applyBorder(tc_no_dist_normalized, color, 1.0 - BORDER_SIZE * BORDER_RADIUS, BORDER_COLOR);
 
     color = mix(applyBorder(tc, color, BORDER_SIZE, BORDER_COLOR), color, 0.05);
 
-    // color = vec4(color.rgb * 1.15, color.a);
-
-    // color = applyScanlines(tc, color);
+    color = applyScanlines(tc, color);
 
     gl_FragColor = color;
     gl_FragColor.a = 1.0;
 }
-

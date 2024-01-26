@@ -44,6 +44,10 @@ local options = astronvim.user_opts("options", {
     virtualedit = "block", -- allow going past end of line in visual block mode
     wrap = false, -- disable wrapping of lines longer than the width of window
     writebackup = false, -- disable making a backup before overwriting a file
+
+    formatoptions = "t",
+    textwidth = 80,
+    colorcolumn = "+1",
   },
   g = {
     mapleader = " ", -- set leader key
