@@ -7,7 +7,7 @@ if [ "$#" -ne 2 ]; then
 fi
 
 move_window() {
-    hyprctl --batch "dispatch moveactive exact $(echo $1 | sed 's/,/ /'); dispatch resizeactive exact $(echo $2 | sed 's/x/ /')"
+    hyprctl --batch "dispatch moveactive exact ${1/,/ }; dispatch resizeactive exact ${2/x/ }"
 }
 
 move_window "$1" "$2"

@@ -23,26 +23,28 @@
 }
 
 .uwuifier {
+  color: $fg;
   padding: 6px;
   margin-top: 6px;
   border-radius: 6px;
   background: $c0;
   &Entry {
     padding: 6px;
+    padding-right: 2rem;
     border-radius: 6px;
     background: $bg;
   }
   &CopyButton {
     font-family: $iconFont;
     padding: 6px;
-    margin-left: 6px;
-    min-width: 1rem;
-    min-height: 1rem;
+    margin: 0;
+    //min-width: 1rem;
+    //min-height: 1rem;
     border-radius: 6px;
-    background: $bg;
+    background: lighten($c0, 2.4%);
     transition: all 0.3s $materialStandard;
     &:hover {
-      background: lighten($bg, 6%);
+      background: lighten($c0, 4.8%);
     }
   }
 }

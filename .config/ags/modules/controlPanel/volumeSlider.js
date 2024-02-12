@@ -1,5 +1,4 @@
-import { Widget, Audio } from "../../imports.js";
-const { Box } = Widget;
+const Audio = await Service.import("audio");
 
 const Icon = () =>
   Widget.Label({
@@ -43,7 +42,7 @@ const Slider = () =>
   });
 
 export const VolumeSlider = () =>
-  Box({
+  Widget.Box({
     className: "volumeSlider",
     vertical: true,
     children: [
@@ -52,7 +51,7 @@ export const VolumeSlider = () =>
         label: "Volume",
         hpack: "start",
       }),
-      Box({
+      Widget.Box({
         children: [Icon(), Slider()],
       }),
     ],

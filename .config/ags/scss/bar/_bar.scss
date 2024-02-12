@@ -27,6 +27,20 @@
   }
 }
 
+.tray {
+  margin-right: 6px;
+  &Icon {
+    margin: 0 1px;
+  }
+  &Icons {
+    margin-left: 6px;
+  }
+  &Chevron {
+    font-family: $iconFont;
+    font-weight: 500;
+  }
+}
+
 .bar {
   font-family: $font;
 }

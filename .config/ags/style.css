@@ -46,6 +46,16 @@
   .barBluetoothIcon.off {
     color: #747d84; }
 
+.tray {
+  margin-right: 6px; }
+  .trayIcon {
+    margin: 0 1px; }
+  .trayIcons {
+    margin-left: 6px; }
+  .trayChevron {
+    font-family: SymbolsNerdFontMono;
+    font-weight: 500; }
+
 .bar {
   font-family: Roboto; }
 
@@ -229,25 +239,25 @@
     min-height: 12px; }
 
 .uwuifier {
+  color: #D5D8DA;
   padding: 6px;
   margin-top: 6px;
   border-radius: 6px;
   background: #232530; }
   .uwuifierEntry {
     padding: 6px;
+    padding-right: 2rem;
     border-radius: 6px;
     background: #1C1E26; }
   .uwuifierCopyButton {
     font-family: SymbolsNerdFontMono;
     padding: 6px;
-    margin-left: 6px;
-    min-width: 1rem;
-    min-height: 1rem;
+    margin: 0;
     border-radius: 6px;
-    background: #1C1E26;
+    background: #282a37;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
     .uwuifierCopyButton:hover {
-      background: #292c38; }
+      background: #2d303e; }
 
 .screwsPanel {
   margin-top: 6px;

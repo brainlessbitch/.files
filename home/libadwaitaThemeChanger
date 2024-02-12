@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+themes=$(find $HOME/.themes -type d -name "gtk-4.0" -printf "%h\n" | xargs -n 1 basename)
+
+changeTheme() {
+  if gum confirm "Change theme to $1?"; then
+    echo -e "Removing old theme...\n"
+    rm -r $HOME/.config/gtk-4.0/* 2>/dev/null
+  
+    echo -e "Intalling new theme...\n"
+    ln -s $HOME/.themes/$1/gtk-4.0/* $HOME/.config/gtk-4.0/
+
+    echo "Done!"
+  else
+    echo "Cancelled."
+  fi
+}
+
+if [ "$1" == "--reset" ] || [ "$1" == "-r" ]; then
+  echo -e "Resetting to default theme...\n"
+  rm -r $HOME/.config/gtk-4.0/* 2>/dev/null
+
+  echo "Done!"
+else
+  theme=$(gum filter $themes)
+  if [ "$theme" ]; then
+    changeTheme $theme
+  else
+    echo "Cancelled."
+  fi
+fi

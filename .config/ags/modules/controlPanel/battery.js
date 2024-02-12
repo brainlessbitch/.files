@@ -1,8 +1,7 @@
-import { Widget, Utils, Battery } from "../../imports.js";
-const { Box } = Widget;
+const Battery = await Service.import("battery");
 
 export const BatteryWidget = () =>
-  Box({
+  Widget.Box({
     className: "battery",
     setup: (self) => {
       Utils.timeout(1, () => {

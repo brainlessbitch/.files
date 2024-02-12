@@ -1,7 +1,8 @@
-import { Widget, App, Network, Bluetooth } from "../../imports.js";
-const { Window, Box, CenterBox } = Widget;
+const Network = await Service.import("network");
+const Bluetooth = await Service.import("bluetooth");
 
 // Widgets
+import { Tray } from "./tray.js";
 import { Workspaces } from "./workspaces.js";
 import { Clock } from "./clock.js";
 
@@ -40,13 +41,13 @@ const BluetoothWidget = () =>
   });
 
 const Left = () =>
-  Box({
+  Widget.Box({
     hpack: "start",
     children: [
       Widget.Button({
         className: "systemInfo",
         onClicked: () => App.toggleWindow("controlPanel"),
-        child: Box({
+        child: Widget.Box({
           children: [NetworkWidget(), BluetoothWidget()],
         }),
       }),
@@ -54,23 +55,23 @@ const Left = () =>
   });
 
 const Center = () =>
-  Box({
+  Widget.Box({
     children: [Workspaces()],
   });
 
 const Right = () =>
-  Box({
+  Widget.Box({
     hpack: "end",
-    children: [Clock()],
+    children: [/*Tray(),*/ Clock()],
   });
 
 export const Bar = () =>
-  Window({
+  Widget.Window({
     name: "bar",
     anchor: ["top", "right", "left"],
     exclusivity: "exclusive",
     margins: [12, 24, 0],
-    child: CenterBox({
+    child: Widget.CenterBox({
       className: "bar",
       start_widget: Left(),
       center_widget: Center(),

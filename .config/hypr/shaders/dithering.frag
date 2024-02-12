@@ -27,6 +27,10 @@ float dither(float color) {
 
 void main() {
     vec4 color = texture2D(tex, v_texcoord);
-    gl_FragColor = vec4(vec3(dither(color.r)), 1.0);
+    
+    float red = dither(color.r);
+    float green = dither(color.g);
+    float blue = dither(color.b);
+    
+    gl_FragColor = vec4(vec3(red, green, blue), 1.0);
 }
-

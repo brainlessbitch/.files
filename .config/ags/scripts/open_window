@@ -7,7 +7,7 @@ if [ "$#" -ne 3 ]; then
 fi
 
 open_window() {
-    hyprctl dispatch exec "[float; move $(echo $1 | sed 's/,/ /'); size $(echo $2 | sed 's/x/ /')] $3"
+    hyprctl dispatch exec "[float; move ${1/,/ }; size ${2/x/ }] $3"
 }
 
 open_window "$1" "$2" "$3"

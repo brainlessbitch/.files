@@ -1,15 +1,12 @@
-import { Utils, App, Battery } from "./imports.js";
-import DirectoryMonitor from "./services/directoryMonitor.js";
 const { Gio } = imports.gi;
+
+const Battery = await Service.import("battery");
 
 // Windows
 import { Bar } from "./modules/bar/bar.js";
 import { ControlPanel } from "./modules/controlPanel/controlPanel.js";
 import { launcher } from "./modules/launcher/launcher.js";
-// import { Dock } from "./modules/dock/dock.js";
 import { Popups } from "./modules/popups/popups.js";
-
-import { Terminal } from "./modules/terminal/terminal.js";
 
 const criticalPowerNotification = new Gio.Notification();
 criticalPowerNotification.set_title("Battery exhausted");
@@ -53,8 +50,7 @@ const applyScss = () => {
 applyScss();
 
 // Check for any changes
-DirectoryMonitor.recursiveDirectoryMonitor(`${App.configDir}/scss`);
-DirectoryMonitor.connect("changed", applyScss);
+Utils.monitorFile(`${App.configDir}/scss`, () => applyScss);
 
 // Main config
 export default {
@@ -64,5 +60,5 @@ export default {
     launcher: 150,
     terminal: 150,
   },
-  windows: [Bar(), ControlPanel(), launcher, Popups() /*Terminal()*/],
+  windows: [Bar(), ControlPanel(), launcher, Popups()],
 };
